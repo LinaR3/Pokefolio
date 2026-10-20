@@ -1,13 +1,10 @@
-import { renderSplashScreen } from './components/SplashScreen.jsx';
-import { renderPokedexShell } from './components/PokedexShell.jsx';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const splashRoot = document.getElementById('splash-root');
-  const appRoot = document.getElementById('app');
-
-  // Renderizar Splash Screen con duración de 1.5 segundos
-  renderSplashScreen(splashRoot, 1500);
-
-  // Renderizar el Pokéfolio
-  renderPokedexShell(appRoot);
-});
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)

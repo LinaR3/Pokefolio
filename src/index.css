@@ -1,51 +1,27 @@
-/* RESET & ESTILOS GLOBALES */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&family=VT323&display=swap');
 
 :root {
-  --bg-dark: #070a12;
-  --font-editorial: 'Inter', sans-serif;
-  --font-pixel: 'Press Start 2P', monospace;
-  --accent-blue: #3b82f6;
-  --glow-blue: #60a5fa;
+  font-family: 'Inter', sans-serif;
+  color: #f8fafc;
+  background: #050916;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --navy: #0b1736;
+  --blue: #162d6b;
+  --accent: #3b82f6;
+  --glow: #60a5fa;
+  --lcd-light: #9bbc0f;
+  --lcd-dark: #0f380f;
+  --pixel-font: 'Press Start 2P', monospace;
 }
 
-body {
-  background-color: var(--bg-dark);
-  color: #f3f4f6;
-  font-family: var(--font-editorial);
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-/* FONDO CON CUADRÍCULA Y TEXTO 2D */
-.app-bg {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 12px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
-  position: relative;
-  z-index: 2;
-}
-
-.bg-text {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-pixel);
-  font-size: 9vw;
-  color: rgba(255, 255, 255, 0.02);
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-  white-space: nowrap;
-}
+* { box-sizing: border-box; }
+html { min-width: 320px; min-height: 100%; background: #050916; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button { color: inherit; font: inherit; }
+button:focus-visible { outline: 3px solid #f8d34a; outline-offset: 3px; }
+::selection { color: #08112a; background: #93c5fd; }
