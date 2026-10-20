@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Screen from './Screen.jsx'
-import ProjectCard from './ProjectCard.jsx'
+import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
 import { audioProjects, contact, gameProjects, skills } from '../data/portfolio.js'
 
 const sections = [
@@ -48,11 +48,24 @@ function ProfileContent() {
   )
 }
 
-function ProjectList({ projects, selectedItem, category, note }) {
+function ProjectDetail({ projects, selectedItem, category }) {
+  const project = projects[selectedItem]
   return (
-    <div className="screen-content project-list">
-      <p className="sample-note">{note}</p>
-      {projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} selected={selectedItem === index} category={category} />)}
+    <div className="screen-content project-detail-screen">
+      <ProjectCard project={project} index={selectedItem} category={category} />
+      <p className="detail-hint">Usa el selector inferior o ▲ / ▼ para cambiar de ficha.</p>
+    </div>
+  )
+}
+
+function ProjectSelectionTray({ projects, activeSection, selectedItem, onSelect }) {
+  const sectionTitle = activeSection === 'audio' ? 'MUESTRAS DE AUDIO' : 'PROYECTOS'
+  return (
+    <div className="project-selection" aria-label={`Selecciona ${sectionTitle.toLowerCase()}`}>
+      <div className="project-selection-heading"><span>{sectionTitle}</span><small>▲ / ▼ NAVEGAR</small></div>
+      <div className="project-selector-list">
+        {projects.map((project, index) => <ProjectSummaryCard key={project.name} project={project} index={index} selected={selectedItem === index} onSelect={() => onSelect(index)} />)}
+      </div>
     </div>
   )
 }
@@ -77,8 +90,8 @@ function ContactContent() {
 
 function SectionContent({ section, selectedItem }) {
   if (section === 'profile') return <ProfileContent />
-  if (section === 'projects') return <ProjectList projects={gameProjects} selectedItem={selectedItem} category="PROYECTO" note="FICHAS DE EJEMPLO · reemplaza datos, imágenes y enlaces." />
-  if (section === 'audio') return <ProjectList projects={audioProjects} selectedItem={selectedItem} category="AUDIO" note="MUESTRAS DE EJEMPLO · reemplaza datos, imágenes y enlaces." />
+  if (section === 'projects') return <ProjectDetail projects={gameProjects} selectedItem={selectedItem} category="PROYECTO" />
+  if (section === 'audio') return <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" />
   return <ContactContent />
 }
 
@@ -209,7 +222,11 @@ export default function PokedexShell() {
               <button className="dpad-button dpad-down" onClick={() => handleUpDown(1)} aria-label="Elemento siguiente">▼</button>
             </div>
             <div className="mobile-ab-buttons"><button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button><button className="ab-button ab-button--b" onClick={() => started ? setActiveIndex(0) : setStarted(true)} aria-label="B, volver a perfil">B</button></div>
-            <div className="mini-card"><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><div><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></div><span className="mini-card-status">ONLINE</span></div>
+            {started && (activeSection.id === 'projects' || activeSection.id === 'audio') ? (
+              <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => setSelectedItems((current) => ({ ...current, [activeSection.id]: index }))} />
+            ) : (
+              <div className="mini-card"><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><div><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></div><span className="mini-card-status">ONLINE</span></div>
+            )}
           </div>
 
           <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO CON CURIOSIDAD <b>♥</b></span></footer>
