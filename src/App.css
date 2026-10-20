@@ -7,6 +7,22 @@
   background-size: 32px 32px, 32px 32px, auto;
 }
 .bg-text { position: fixed; z-index: -1; left: 50%; top: 50%; color: #ffffff08; white-space: nowrap; pointer-events: none; font: 7vw var(--pixel-font); transform: translate(-50%, -50%); }
+.splash-screen {
+  position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(24px, 6vw, 64px); overflow: auto; background: #090a0f; color: #f9fafb;
+  transition: opacity .8s ease, transform .8s ease;
+}
+.splash-screen.fade-out { opacity: 0; transform: scale(1.025); pointer-events: none; }
+.splash-top { display: flex; justify-content: space-between; gap: 16px; color: #6b7280; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.splash-center { margin: auto 0; padding: 52px 0; }
+.splash-eyebrow { margin: 0 0 clamp(14px, 3vw, 28px); color: #60a5fa; font: 8px var(--pixel-font); letter-spacing: 1px; }
+.splash-title { margin: 0; color: #f9fafb; font-size: clamp(2rem, 10vw, 10rem); font-weight: 900; line-height: .95; letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; }
+.splash-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.splash-role { display: flex; flex-direction: column; gap: 8px; }
+.role-main { color: #3b82f6; font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 700; }
+.role-sub { color: #9ca3af; font-size: clamp(.85rem, 1.5vw, 1.15rem); font-weight: 400; }
+.splash-index { color: #6b7280; font: 7px var(--pixel-font); white-space: nowrap; }
+.splash-index b { color: #60a5fa; }
 .gameboy {
   width: min(100%, 820px); position: relative; z-index: 1; overflow: hidden; border-radius: 26px 26px 42px 42px;
   background: linear-gradient(155deg, #21469b 0%, #162d6b 40%, #0b1736 100%);
@@ -43,7 +59,7 @@
 .scanlines { position: absolute; z-index: 2; inset: 9px; border-radius: 9px; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, #0000000c 2px 4px); }
 .welcome-screen { display: flex; min-height: 354px; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px; padding: 23px 18px 18px; text-align: center; }
 .welcome-copy .eyebrow, .card-kicker { margin: 0 0 10px; font: 7px var(--pixel-font); letter-spacing: 1.1px; }
-.welcome-copy h1 { margin: 0; font: 12px/1.9 var(--pixel-font); text-transform: uppercase; }
+.welcome-copy h1 { margin: 0; font: 12px/1.9 var(--pixel-font); text-transform: uppercase; white-space: nowrap; }
 .welcome-copy h1 span { color: #163675; }
 .welcome-tag { margin: 8px 0 0; font: 7px var(--pixel-font); }
 .welcome-ball-button { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0; border: 0; background: none; color: var(--lcd-dark); cursor: pointer; }
@@ -137,10 +153,23 @@
 .project-selection .project-visual img, .project-selection .project-visual video { min-height: 40px; height: 40px; }
 .project-selection .project-visual video { object-fit: cover; }
 .contact-card h2 { margin-bottom: 12px; font-size: 10px; }
-.contact-list { display: grid; gap: 10px; margin: 0 0 14px; }
-.contact-list div { display: grid; gap: 4px; padding-bottom: 7px; border-bottom: 1px solid #0f380f24; }
-.contact-list a { color: inherit; overflow-wrap: anywhere; }
+.contact-link-list { display: grid; gap: 7px; margin: 0 0 13px; }
+.contact-link { display: grid; min-width: 0; grid-template-columns: 36px minmax(0, 1fr) 14px; align-items: center; gap: 9px; padding: 8px; border: 1px solid #0f380f42; border-radius: 5px; background: #0f380f0c; color: inherit; text-align: left; text-decoration: none; transition: background .16s ease, border-color .16s ease, transform .16s ease; }
+.contact-link[href]:hover, .contact-link[href]:focus-visible { border-color: #0f380f9c; background: #0f380f20; transform: translateY(-1px); }
+.contact-link-copy { display: grid; min-width: 0; gap: 3px; }
+.contact-link-label { color: #164f1a; font: 5px var(--pixel-font); }
+.contact-link strong { overflow-wrap: anywhere; font: 16px/1.1 'VT323', monospace; }
+.contact-link--email strong { font-size: clamp(17px, 4vw, 21px); }
+.contact-link small { color: #0f380fa8; font: 5px var(--pixel-font); line-height: 1.6; }
+.contact-icon { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid #0f380f50; border-radius: 5px; background: #f5f6df88; color: #0f380f; }
+.contact-icon--email { font: 20px/1 'Inter', sans-serif; font-weight: 700; }
+.contact-icon--github { padding: 6px; }
+.contact-icon--linkedin { border-color: #0a66c2; background: #0a66c2; color: #fff; font: 700 17px/1 'Inter', sans-serif; letter-spacing: -1px; }
+.contact-link-arrow { color: #164f1a; font: 11px var(--pixel-font); text-align: center; }
+.contact-link--disabled { opacity: .7; }
+.contact-link--disabled .contact-link-copy strong { font-size: 14px; }
 .email-cta { display: inline-flex; align-items: center; justify-content: center; padding: 9px 12px; border-radius: 4px; background: var(--lcd-dark); color: var(--lcd-light); font: 7px var(--pixel-font); text-decoration: none; }
+.email-cta:focus-visible { outline: 3px solid #164f1a; outline-offset: 2px; }
 .contact-card > .sample-note { margin-top: 9px; }
 .screen-footer { display: flex; justify-content: space-between; border-top: 1px solid #0f380f45; padding-top: 7px; font: 6px var(--pixel-font); }
 .screen-footer span:first-child { color: #164f1a; }
@@ -171,6 +200,12 @@
 .console-footer b { color: #f87171; }
 
 @media (max-width: 620px) {
+  .splash-top { font-size: 8px; letter-spacing: 1px; }
+  .splash-center { padding: 32px 0; }
+  .splash-eyebrow { font-size: 6px; line-height: 1.8; }
+  .splash-title { font-size: clamp(2rem, 10vw, 3.5rem); }
+  .splash-bottom { align-items: flex-start; flex-direction: column; gap: 26px; }
+  .splash-index { align-self: flex-end; }
   .app-bg { padding: 20px 12px; }
   .gameboy { border-radius: 20px 20px 30px 30px; }
   .gameboy-topline { height: 44px; gap: 8px; padding: 0 12px; }
@@ -183,7 +218,7 @@
   .app-screen { min-height: 372px; max-height: 470px; padding: 12px 10px 9px; }
   .welcome-screen { padding: 24px 10px 17px; }
   .welcome-copy .eyebrow { font-size: 6px; }
-  .welcome-copy h1 { font-size: 10px; }
+  .welcome-copy h1 { font-size: 9px; }
   .welcome-tag, .trainer-id { font-size: 6px; }
   .project-detail { grid-template-columns: 75px minmax(0, 1fr); gap: 8px; padding: 7px; }
   .project-detail > .project-visual { width: 75px; min-height: 112px; }
@@ -226,6 +261,9 @@
   .mini-card-status { display: none; }
   .project-visual img, .project-visual video { min-height: 58px; }
   .console-footer { font-size: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen { transition-duration: .01ms; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

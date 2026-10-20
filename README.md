@@ -1,4 +1,4 @@
-# 🎮 Pokéfolio - Lina Reina
+# 🎮 Pokefolio - Lina Reina
 
 Portafolio interactivo con estética GameBoy 2D / Pokédex y pantalla de bienvenida estilo editorial moderno.
 

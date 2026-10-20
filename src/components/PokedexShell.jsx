@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Screen from './Screen.jsx'
+import SplashScreen from './SplashScreen.jsx'
 import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
 import { audioProjects, contact, gameProjects, skills } from '../data/portfolio.js'
 
@@ -19,10 +20,10 @@ function WelcomeScreen({ onStart }) {
     <div className="welcome-screen">
       <div className="welcome-copy">
         <p className="eyebrow">GAMEBOY PORTFOLIO EDITION</p>
-        <h1>Lina Alejandra<br /><span>Reina</span></h1>
+        <h1>Lina Reina</h1>
         <p className="welcome-tag">DESARROLLO · CREATIVIDAD · AUDIO</p>
       </div>
-      <button className="welcome-ball-button" onClick={onStart} aria-label="Abrir Pokéfolio">
+      <button className="welcome-ball-button" onClick={onStart} aria-label="Abrir Pokefolio">
         <Pokeball className="pokeball--large" />
         <span className="trainer-id">ENTRENADORA ID: #2026</span>
       </button>
@@ -39,7 +40,7 @@ function ProfileContent() {
     <div className="screen-content">
       <article className="lcd-card profile-card">
         <div className="photo-placeholder" role="img" aria-label="Espacio reservado para foto de perfil"><span>FOTO</span><small>tu imagen aquí</small></div>
-        <div className="profile-intro"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Alejandra Reina</h2><p className="profile-role">Game Developer | C# | Sound Designer | Unity</p></div>
+        <div className="profile-intro"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p className="profile-role">Game Developer | C# | Sound Designer | Unity</p></div>
       </article>
       <p className="photo-hint">FOTO DE PERFIL · sugerido: 512 × 512 px, cuadrada</p>
       <article className="lcd-card"><h3>■ BIOGRAFÍA DE ENTRENADORA</h3><p className="editable-placeholder">[Escribe aquí tu biografía: quién eres, qué te gusta crear y qué buscas en tus próximos proyectos.]</p></article>
@@ -70,19 +71,46 @@ function ProjectSelectionTray({ projects, activeSection, selectedItem, onSelect 
   )
 }
 
+function ContactIcon({ type }) {
+  if (type === 'email') return <span className="contact-icon contact-icon--email" aria-hidden="true">@</span>
+  if (type === 'github') return (
+    <svg className="contact-icon contact-icon--github" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.75-1.32-3.75-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.7.08-.69.08-.69 1.12.08 1.71 1.16 1.71 1.16.99 1.7 2.59 1.21 3.22.93.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.51 0-1.22.44-2.21 1.16-2.99-.12-.29-.5-1.42.11-2.96 0 0 .95-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.67.12 2.96.72.78 1.15 1.77 1.15 2.99 0 4.28-2.61 5.22-5.1 5.5.4.35.75 1.03.75 2.08v3.06c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
+    </svg>
+  )
+  return <span className="contact-icon contact-icon--linkedin" aria-hidden="true">in</span>
+}
+
+function ContactLink({ type, label, value, href, hint, external = false, disabled = false }) {
+  const content = (
+    <>
+      <ContactIcon type={type} />
+      <span className="contact-link-copy">
+        <span className="contact-link-label">{label}</span>
+        <strong>{value}</strong>
+        <small>{hint}</small>
+      </span>
+      <span className="contact-link-arrow" aria-hidden="true">{disabled ? '…' : '↗'}</span>
+    </>
+  )
+
+  if (disabled) return <div className="contact-link contact-link--disabled" aria-disabled="true">{content}</div>
+  return <a className={`contact-link contact-link--${type}`} href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{content}</a>
+}
+
 function ContactContent() {
   return (
     <div className="screen-content">
       <article className="lcd-card contact-card">
         <p className="card-kicker">TARJETA DE ENTRENADORA</p>
-        <h2>Lina Alejandra Reina</h2>
-        <dl className="contact-list">
-          <div><dt>EMAIL</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>
-          <div><dt>GITHUB</dt><dd><a href={contact.github} target="_blank" rel="noreferrer">github.com/LinaR3/Pokefolio ↗</a></dd></div>
-          <div><dt>LINKEDIN</dt><dd>{contact.linkedin ? <a href={contact.linkedin} target="_blank" rel="noreferrer">Ver perfil ↗</a> : <span className="editable-placeholder">[Agrega aquí tu URL de LinkedIn]</span>}</dd></div>
-        </dl>
+        <h2>Lina Reina</h2>
+        <div className="contact-link-list" aria-label="Enlaces de contacto">
+          <ContactLink type="email" label="CORREO ELECTRÓNICO" value={contact.email} href={`mailto:${contact.email}`} hint="ABRIR APLICACIÓN DE CORREO" />
+          <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} external hint="VISITAR PERFIL" />
+          <ContactLink type="linkedin" label="LINKEDIN" value={contact.linkedin ? 'Perfil profesional de Lina' : 'Enlace pendiente'} href={contact.linkedin} external hint={contact.linkedin ? 'VISITAR PERFIL' : 'Agrega tu URL de LinkedIn'} disabled={!contact.linkedin} />
+        </div>
         <a className="email-cta" href={`mailto:${contact.email}`}>✉ ENVIAR UN CORREO</a>
-        <p className="sample-note">El correo es un dato de ejemplo: cámbialo por el tuyo antes de publicar.</p>
+        <p className="sample-note">Selecciona una tarjeta para abrir el enlace de contacto.</p>
       </article>
     </div>
   )
@@ -160,11 +188,12 @@ export default function PokedexShell() {
 
   return (
     <main className="app-bg">
+      <SplashScreen />
       <div className="bg-text" aria-hidden="true">LINA REINA</div>
-      <section className="gameboy" aria-label="Pokéfolio de Lina Reina">
+      <section className="gameboy" aria-label="Pokefolio de Lina Reina">
         <header className="gameboy-topline">
           <span className="topline-rule" />
-          <div className="topline-brand"><Pokeball /><span>POKÉFOLIO <b>•</b> LINA REINA</span><Pokeball /></div>
+          <div className="topline-brand"><Pokeball /><span>POKEFOLIO <b>•</b> LINA REINA</span><Pokeball /></div>
           <span className="topline-rule" />
         </header>
 
@@ -205,7 +234,7 @@ export default function PokedexShell() {
         <div className="console-mark"><i /><span>P O K É D E X</span><i /></div>
 
         <div className="console-controls">
-          <nav className="category-nav" aria-label="Secciones del Pokéfolio">
+          <nav className="category-nav" aria-label="Secciones del Pokefolio">
             {sections.map((section, index) => (
               <button key={section.id} className={`category-button${started && activeIndex === index ? ' is-active' : ''}`} onClick={() => selectSection(index)} aria-pressed={started && activeIndex === index}>
                 <span className="category-icon" aria-hidden="true">{section.icon}</span><span>{section.label}</span>

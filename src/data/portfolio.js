@@ -84,7 +84,7 @@ export const skills = [
 ]
 
 export const contact = {
-  email: 'tu-correo@ejemplo.com',
-  github: 'https://github.com/LinaR3/Pokefolio',
-  linkedin: '',
+  email: 'linareinap3@gmail.com',
+  github: 'https://github.com/LinaR3',
+  linkedin: 'https://www.linkedin.com/in/linareina/',
 }
