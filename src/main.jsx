@@ -1,5 +1,5 @@
-import { renderSplashScreen } from './components/SplashScreen.js';
-import { renderPokedexShell } from './components/PokedexShell.js';
+import { renderSplashScreen } from './components/SplashScreen.jsx';
+import { renderPokedexShell } from './components/PokedexShell.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   const splashRoot = document.getElementById('splash-root');
