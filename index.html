@@ -1,13 +1,27 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pokefolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lina Reina | Game Developer & Sound Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/splash.css">
+  <link rel="stylesheet" href="./src/styles/gameboy.css">
+</head>
+<body>
+
+  <!-- BANNER DE RECIBIMIENTO (SPLASH SCREEN) -->
+  <div id="splash-root"></div>
+
+  <!-- FONDO CON NOMBRE EN 2D Y CUADRÍCULA -->
+  <div class="bg-text">LINA REINA</div>
+
+  <!-- APLICACIÓN PRINCIPAL (POKÉFOLIO) -->
+  <main id="app" class="app-bg"></main>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
 </html>
