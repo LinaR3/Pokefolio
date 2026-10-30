@@ -28,7 +28,8 @@ button:focus-visible { outline: 3px solid #f8d34a; outline-offset: 3px; }
 
 @media (hover: hover) and (pointer: fine) {
   body { cursor: url('/pokeball-cursor.svg') 16 16, auto; }
-  a, button, [role='button'] { cursor: url('/pokeball-cursor.svg') 16 16, pointer; }
+  a:not([aria-disabled='true']), button:not(:disabled), [role='button'] { cursor: url('/pokeball-cursor.svg') 16 16, pointer; }
+  button:disabled, [aria-disabled='true'] { cursor: not-allowed; }
   input, textarea, [contenteditable='true'] { cursor: text; }
   :disabled, [aria-disabled='true'] { cursor: not-allowed; }
 }
