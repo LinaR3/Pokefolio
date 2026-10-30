@@ -53,9 +53,9 @@
 .ab-button--b { background: radial-gradient(circle at 35% 30%, #f59e0b, #b45309); }
 .mobile-ab-buttons { display: none; }
 .display-frame { position: relative; display: flex; min-width: 0; min-height: 374px; flex: 1; padding: 9px; overflow: hidden; border: 2px solid #0c1a3b; border-radius: 17px; background: #050a16; box-shadow: inset 0 2px 8px #000c; }
-.pokedex-screen { position: relative; z-index: 1; width: 100%; min-height: 354px; overflow: hidden; border-radius: 9px; background: linear-gradient(135deg, #a8c52b, #9bbc0f 62%, #86a91b); color: var(--lcd-dark); }
+.pokedex-screen { position: relative; z-index: 1; width: 100%; height: 440px; min-height: 440px; overflow: hidden; border-radius: 9px; background: linear-gradient(135deg, #a8c52b, #9bbc0f 62%, #86a91b); color: var(--lcd-dark); }
 .scanlines { position: absolute; z-index: 2; inset: 9px; border-radius: 9px; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, #0000000c 2px 4px); }
-.welcome-screen { display: flex; min-height: 354px; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px; padding: 23px 18px 18px; text-align: center; }
+.welcome-screen { display: flex; height: 100%; min-height: 0; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px; padding: 23px 18px 18px; text-align: center; }
 .welcome-copy .eyebrow, .card-kicker { margin: 0 0 10px; font: 7px var(--pixel-font); letter-spacing: 1.1px; }
 .welcome-copy h1 { margin: 0; font: 12px/1.9 var(--pixel-font); text-transform: uppercase; white-space: nowrap; }
 .welcome-copy h1 span { color: #163675; }
@@ -70,7 +70,7 @@
 .pixel-button { padding: 10px 15px; border: 1px solid var(--lcd-dark); border-radius: 4px; background: var(--lcd-dark); color: var(--lcd-light); font: 8px var(--pixel-font); cursor: pointer; box-shadow: 0 3px #081f08; }
 .pixel-button span { margin-left: 7px; }
 .welcome-action p { margin: 0; font: 6px var(--pixel-font); }
-.app-screen { display: flex; min-height: 354px; max-height: 440px; flex-direction: column; padding: 15px 17px 10px; }
+.app-screen { display: flex; height: 100%; min-height: 0; max-height: none; flex-direction: column; padding: 15px 17px 10px; }
 .screen-heading { display: flex; min-height: 37px; flex-wrap: wrap; align-items: center; gap: 8px; border-bottom: 2px solid #0f380f4a; padding-bottom: 8px; }
 .screen-number { font: 8px var(--pixel-font); }
 .screen-heading h1 { margin: 0 auto 0 0; font: 9px var(--pixel-font); text-transform: uppercase; }
@@ -193,8 +193,9 @@
   .gameboy-display-row { gap: 0; padding: 11px 10px 5px; }
   .side-panel { display: none; }
   .display-frame { min-height: 390px; padding: 7px; }
-  .pokedex-screen, .welcome-screen { min-height: 372px; }
-  .app-screen { min-height: 372px; max-height: 470px; padding: 12px 10px 9px; }
+  .pokedex-screen { height: 470px; min-height: 470px; }
+  .welcome-screen { height: 100%; min-height: 0; }
+  .app-screen { height: 100%; min-height: 0; max-height: none; padding: 12px 10px 9px; }
   .welcome-screen { padding: 24px 10px 17px; }
   .welcome-copy .eyebrow { font-size: 6px; }
   .welcome-copy h1 { font-size: 9px; }
