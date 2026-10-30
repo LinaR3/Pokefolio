@@ -107,7 +107,7 @@ function AudioEmptyContent() {
 }
 
 function ProjectSelectionPrompt() {
-  return <div className="project-prompt"><span aria-hidden="true">✦</span><h2>SELECCIONA TU PROYECTO</h2><p>Elige una ficha abajo y presiona A para comenzar.</p></div>
+  return <div className="project-prompt"><span aria-hidden="true">✦</span><h2>SELECCIONA TU PROYECTO</h2><p>Haz clic en una ficha o usa ▲ / ▼ y presiona A.</p></div>
 }
 
 function SectionContent({ section, selectedItem }) {
