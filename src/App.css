@@ -177,6 +177,18 @@
 .screen-footer-runner { position: absolute; bottom: 0; left: 0; display: block; width: var(--runner-width); height: 42px; background-image: url("/images/sprite-sheets/lina-umbreon-walk.png"); background-repeat: no-repeat; background-size: 400% 100%; background-position: 0 0; image-rendering: pixelated; animation: lina-walk-frames .64s steps(3, end) infinite, lina-walk-runway 16s linear infinite; }
 @keyframes lina-walk-frames { from { background-position: 0 0; } to { background-position: 100% 0; } }
 @keyframes lina-walk-runway { 0% { left: 0; transform: scaleX(-1); } 49.5% { left: calc(100% - var(--runner-width)); transform: scaleX(-1); } 50% { left: calc(100% - var(--runner-width)); transform: scaleX(1); } 99.5% { left: 0; transform: scaleX(1); } 100% { left: 0; transform: scaleX(-1); } }
+.screen-footer--projects .screen-footer-runway { --runner-width: clamp(32px, 5.5vw, 42px); top: -54px; left: 12%; right: 12%; height: 54px; }
+.screen-footer--projects .screen-footer-runner { left: 50%; width: var(--runner-width); height: 54px; transform: translateX(-50%); background-image: url("/images/sprite-sheets/lina-pokeball-release.png"); background-size: 400% 200%; animation: lina-pokeball-release 7s steps(1, end) 1 forwards; }
+@keyframes lina-pokeball-release {
+  0% { background-position: 0 0; }
+  12.5% { background-position: 33.333% 0; }
+  25% { background-position: 66.667% 0; }
+  37.5% { background-position: 100% 0; }
+  50% { background-position: 0 100%; }
+  62.5% { background-position: 33.333% 100%; }
+  75% { background-position: 66.667% 100%; }
+  87.5%, 100% { background-position: 100% 100%; }
+}
 .screen-footer span:first-child { color: #164f1a; }
 .console-mark { display: flex; align-items: center; justify-content: space-around; gap: 12px; padding: 9px 36px 13px; color: #93c5fd8c; font: 7px var(--pixel-font); letter-spacing: 2px; }
 .console-mark i { height: 14px; width: 14px; border: 1px solid #ffffff48; border-radius: 50%; background: #ef444448; }
@@ -270,6 +282,7 @@
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .trainer-hug-sprite::before { animation: none; background-position: 50% 95.24%; }
   .screen-footer-runner { animation: none; background-position: 33.333% 0; left: 0; transform: scaleX(-1); }
+  .screen-footer--projects .screen-footer-runner { left: 50%; transform: translateX(-50%); background-position: 100% 100%; }
 }
 
 .audio-empty { display: flex; min-height: 240px; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
