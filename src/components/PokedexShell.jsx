@@ -3,13 +3,12 @@ import Screen from './Screen.jsx'
 import SplashScreen from './SplashScreen.jsx'
 import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
 import ProjectOverlay from './ProjectOverlay.jsx'
-import { audioProjects, contact, gameProjects, skills } from '../data/portfolio.js'
+import { audioProjects, contact, gameProjects } from '../data/portfolio.js'
 
 const sections = [
-  { id: 'profile', label: 'Perfil', icon: '✦', number: '#001', title: 'Lina Reina', types: ['ENTRENADORA', 'DEV'] },
-  { id: 'projects', label: 'Proyectos', icon: '▣', number: '#002', title: 'Proyectos', types: ['CÓDIGO'] },
-  { id: 'audio', label: 'Audio / SFX', icon: '♫', number: '#003', title: 'Audio & SFX', types: ['SONIDO'] },
-  { id: 'contact', label: 'Contacto', icon: '✉', number: '#004', title: 'Contacto', types: ['LINKS'] },
+  { id: 'projects', label: 'Proyectos', icon: '▣', number: '#001', title: 'Proyectos', types: ['CÓDIGO'] },
+  { id: 'audio', label: 'Audio / SFX', icon: '♫', number: '#002', title: 'Audio & SFX', types: ['SONIDO'] },
+  { id: 'contact', label: 'Contacto', icon: '✉', number: '#003', title: 'Contacto', types: ['ENTRENADORA', 'LINKS'] },
 ]
 
 function Pokeball({ className = '' }) {
@@ -32,20 +31,6 @@ function WelcomeScreen({ onStart }) {
         <button className="pixel-button" onClick={onStart}>INICIAR AVENTURA <span>►</span></button>
         <p>Usa los controles o selecciona una sección</p>
       </div>
-    </div>
-  )
-}
-
-function ProfileContent() {
-  return (
-    <div className="screen-content">
-      <article className="lcd-card profile-card">
-        <div className="photo-placeholder" role="img" aria-label="Espacio reservado para foto de perfil"><span>FOTO</span><small>tu imagen aquí</small></div>
-        <div className="profile-intro"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p className="profile-role">Game Developer | C# | Sound Designer | Unity</p></div>
-      </article>
-      <p className="photo-hint">FOTO DE PERFIL · sugerido: 512 × 512 px, cuadrada</p>
-      <article className="lcd-card"><h3>■ BIOGRAFÍA DE ENTRENADORA</h3><p className="editable-placeholder">[Escribe aquí tu biografía: quién eres, qué te gusta crear y qué buscas en tus próximos proyectos.]</p></article>
-      <article className="lcd-card skills-card"><h3>■ TECH STACK</h3><div className="skill-bars">{skills.map((skill) => <div className="skill-row" key={skill.name}><div className="skill-label"><span>{skill.name}</span><strong>{skill.value}%</strong></div><div className="skill-track" role="progressbar" aria-label={skill.name} aria-valuemin="0" aria-valuemax="100" aria-valuenow={skill.value}><span style={{ width: `${skill.value}%` }} /></div></div>)}</div></article>
     </div>
   )
 }
@@ -73,16 +58,16 @@ function ProjectSelectionTray({ projects, activeSection, selectedItem, onSelect 
 }
 
 function ContactIcon({ type }) {
-  if (type === 'email') return <span className="contact-icon contact-icon--email" aria-hidden="true">@</span>
   if (type === 'github') return (
     <svg className="contact-icon contact-icon--github" viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.75-1.32-3.75-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.7.08-.69.08-.69 1.12.08 1.71 1.16 1.71 1.16.99 1.7 2.59 1.21 3.22.93.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.51 0-1.22.44-2.21 1.16-2.99-.12-.29-.5-1.42.11-2.96 0 0 .95-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.67.12 2.96.72.78 1.15 1.77 1.15 2.99 0 4.28-2.61 5.22-5.1 5.5.4.35.75 1.03.75 2.08v3.06c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
     </svg>
   )
-  return <span className="contact-icon contact-icon--linkedin" aria-hidden="true">in</span>
+  if (type === 'linkedin') return <span className="contact-icon contact-icon--linkedin" aria-hidden="true">in</span>
+  return <span className="contact-icon contact-icon--itchio" aria-hidden="true">itch.io</span>
 }
 
-function ContactLink({ type, label, value, href, hint, external = false, disabled = false }) {
+function ContactLink({ type, label, value, href, hint }) {
   const content = (
     <>
       <ContactIcon type={type} />
@@ -91,27 +76,27 @@ function ContactLink({ type, label, value, href, hint, external = false, disable
         <strong>{value}</strong>
         <small>{hint}</small>
       </span>
-      <span className="contact-link-arrow" aria-hidden="true">{disabled ? '…' : '↗'}</span>
+      <span className="contact-link-arrow" aria-hidden="true">↗</span>
     </>
   )
 
-  if (disabled) return <div className="contact-link contact-link--disabled" aria-disabled="true">{content}</div>
-  return <a className={`contact-link contact-link--${type}`} href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{content}</a>
+  return <a className={`contact-link contact-link--${type}`} href={href} target="_blank" rel="noreferrer">{content}</a>
 }
 
 function ContactContent() {
   return (
     <div className="screen-content">
       <article className="lcd-card contact-card">
-        <p className="card-kicker">TARJETA DE ENTRENADORA</p>
-        <h2>Lina Reina</h2>
-        <div className="contact-link-list" aria-label="Enlaces de contacto">
-          <ContactLink type="email" label="CORREO ELECTRÓNICO" value={contact.email} href={`mailto:${contact.email}`} hint="ABRIR APLICACIÓN DE CORREO" />
-          <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} external hint="VISITAR PERFIL" />
-          <ContactLink type="linkedin" label="LINKEDIN" value={contact.linkedin ? 'Perfil profesional de Lina' : 'Enlace pendiente'} href={contact.linkedin} external hint={contact.linkedin ? 'VISITAR PERFIL' : 'Agrega tu URL de LinkedIn'} disabled={!contact.linkedin} />
+        <div className="trainer-card">
+          <div className="trainer-avatar" role="img" aria-label="Retrato de Lina Reina">LR</div>
+          <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Sound Designer · Unity</p></div>
         </div>
-        <a className="email-cta" href={`mailto:${contact.email}`}>✉ ENVIAR UN CORREO</a>
-        <p className="sample-note">Selecciona una tarjeta para abrir el enlace de contacto.</p>
+        <div className="contact-link-list" aria-label="Perfiles profesionales">
+          <ContactLink type="linkedin" label="LINKEDIN" value="Perfil profesional" href={contact.linkedin} hint="VISITAR PERFIL" />
+          <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} hint="VER PROYECTOS" />
+          <ContactLink type="itchio" label="ITCH.IO" value="linar3.itch.io" href={contact.itchio} hint="JUGAR MIS PROYECTOS" />
+        </div>
+        <a className="email-cta" href={`mailto:${contact.email}`}>✉ ESCRÍBEME POR CORREO</a>
       </article>
     </div>
   )
@@ -122,7 +107,6 @@ function ProjectSelectionPrompt() {
 }
 
 function SectionContent({ section, selectedItem }) {
-  if (section === 'profile') return <ProfileContent />
   if (section === 'projects') return <ProjectSelectionPrompt />
   if (section === 'audio') return <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" />
   return <ContactContent />
@@ -195,7 +179,7 @@ export default function PokedexShell() {
       if (event.key === 'ArrowDown') { event.preventDefault(); cycleItem(1) }
       if (event.key === 'ArrowUp') { event.preventDefault(); cycleItem(-1) }
       if (event.key.toLowerCase() === 'a') handleAButton()
-      if (event.key.toLowerCase() === 'b') setActiveIndex(0)
+      if (event.key.toLowerCase() === 'b') resetToWelcome()
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
@@ -235,7 +219,7 @@ export default function PokedexShell() {
                     <div className="type-badges">{activeSection.types.map((type) => <span key={type}>{type}</span>)}</div>
                   </header>
                   <SectionContent section={activeSection.id} selectedItem={selectedItems[activeSection.id] ?? 0} />
-                  <footer className="screen-footer"><span>● SISTEMA LISTO</span><span>{String(activeIndex + 1).padStart(2, '0')} / 04</span></footer>
+                  <footer className="screen-footer"><span>● SISTEMA LISTO</span><span>{String(activeIndex + 1).padStart(2, '0')} / 03</span></footer>
                 </div>
               )}
             </Screen>
@@ -245,7 +229,7 @@ export default function PokedexShell() {
             <div className="sprite-orb">✦</div>
             <div className="ab-buttons">
               <button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button>
-              <button className="ab-button ab-button--b" onClick={() => started ? setActiveIndex(0) : setStarted(true)} aria-label="B, volver a perfil">B</button>
+              <button className="ab-button ab-button--b" onClick={resetToWelcome} aria-label="B, volver al inicio">B</button>
             </div>
             <span className="side-mark side-mark--blue">AZUL</span>
           </aside>
@@ -270,7 +254,7 @@ export default function PokedexShell() {
               <button className="dpad-button dpad-right" onClick={() => cycleSection(1)} aria-label="Sección siguiente">▶</button>
               <button className="dpad-button dpad-down" onClick={() => handleUpDown(1)} aria-label="Elemento siguiente">▼</button>
             </div>
-            <div className="mobile-ab-buttons"><button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button><button className="ab-button ab-button--b" onClick={() => started ? setActiveIndex(0) : setStarted(true)} aria-label="B, volver a perfil">B</button></div>
+            <div className="mobile-ab-buttons"><button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button><button className="ab-button ab-button--b" onClick={resetToWelcome} aria-label="B, volver al inicio">B</button></div>
             {started && (activeSection.id === 'projects' || activeSection.id === 'audio') ? (
               <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => { setSelectedItems((current) => ({ ...current, [activeSection.id]: index })); if (activeSection.id === 'projects') openProject(gameProjects[index]) }} />
             ) : (

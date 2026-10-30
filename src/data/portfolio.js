@@ -52,14 +52,9 @@ export const audioProjects = [
   },
 ]
 
-export const skills = [
-  { name: 'Unity', value: 80 },
-  { name: 'Python', value: 70 },
-  { name: 'SFX · Audio', value: 70 },
-]
-
 export const contact = {
   email: 'linareinap3@gmail.com',
   github: 'https://github.com/LinaR3',
   linkedin: 'https://www.linkedin.com/in/linareina/',
+  itchio: 'https://linar3.itch.io/',
 }
