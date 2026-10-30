@@ -112,7 +112,7 @@
 .project-card-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 5px; }
 .project-card-title-row .card-kicker { margin-bottom: 4px; font-size: 5px; }
 .project-card-title-row h2 { margin: 0; overflow-wrap: anywhere; font-size: 8px; }
-.project-status-dot { display: block; width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid #f8fafc; border-radius: 50%; box-shadow: 0 0 0 2px #0b1736, 0 0 8px currentColor; cursor: help; }
+.project-status-dot { display: block; width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid #f8fafc; border-radius: 50%; box-shadow: 0 0 0 2px #0b1736, 0 0 8px currentColor; }
 .project-status--ready { color: #4ade80; background: #22c55e; }
 .project-status--progress { color: #facc15; background: #eab308; }
 .project-status--suspended { color: #f87171; background: #ef4444; }
