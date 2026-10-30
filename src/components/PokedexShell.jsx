@@ -247,7 +247,7 @@ export default function PokedexShell() {
           </aside>
         </div>
 
-        <div className="console-mark"><i /><span>P O K É D E X</span><i /></div>
+        <div className="console-mark"><i /><span>LINA REINA</span><i /></div>
 
         <div className="console-controls">
           <nav className="category-nav" aria-label="Secciones del Pokefolio">
