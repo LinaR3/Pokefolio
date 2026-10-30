@@ -256,7 +256,7 @@
 .project-overlay__backdrop { position: absolute; inset: 0; border: 0; background: #02040bbd; opacity: 0; transition: opacity .62s ease; pointer-events: auto; }
 .project-overlay.is-expanded .project-overlay__backdrop { opacity: 1; }
 .project-overlay__screen { position: fixed; left: var(--origin-left); top: var(--origin-top); width: var(--origin-width); height: var(--origin-height); overflow: hidden; border: 8px solid #070a12; border-radius: 16px; background: var(--lcd-light); color: var(--lcd-dark); box-shadow: 0 0 0 2px #ffffff55, 0 24px 80px #000b; transition: left .62s cubic-bezier(.18,.78,.2,1), top .62s cubic-bezier(.18,.78,.2,1), width .62s cubic-bezier(.18,.78,.2,1), height .62s cubic-bezier(.18,.78,.2,1), border-radius .62s ease; pointer-events: auto; }
-.project-overlay.is-expanded .project-overlay__screen { left: 3vw; top: 3vh; width: 94vw; height: 94vh; border-radius: 20px; }
+.project-overlay.is-expanded .project-overlay__screen { left: 15vw; top: 7vh; width: 70vw; height: 86vh; border-radius: 20px; }
 .project-overlay__header { display: flex; min-height: 54px; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 16px; border-bottom: 2px solid #0f380f4a; font: 7px var(--pixel-font); }
 .project-overlay__header > span { display: flex; align-items: center; gap: 10px; }
 .project-overlay__header button, .project-overlay__return { padding: 10px 12px; border: 1px solid #0f380f77; border-radius: 4px; background: var(--lcd-dark); color: var(--lcd-light); font: 6px var(--pixel-font); cursor: pointer; }
