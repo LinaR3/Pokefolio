@@ -5,6 +5,11 @@ import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
 import ProjectOverlay from './ProjectOverlay.jsx'
 import { audioProjects, contact, gameProjects } from '../data/portfolio.js'
 
+function getEmailComposeUrl(email) {
+  const params = new URLSearchParams({ view: 'cm', fs: '1', to: email })
+  return `https://mail.google.com/mail/?${params.toString()}`
+}
+
 const sections = [
   { id: 'projects', label: 'Proyectos', icon: '▣', number: '#001', title: 'Proyectos', types: ['CÓDIGO'] },
   { id: 'audio', label: 'Audio / SFX', icon: '♫', number: '#002', title: 'Audio & SFX', types: ['SONIDO'] },
@@ -96,7 +101,7 @@ function ContactContent() {
           <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} hint="VER PROYECTOS" />
           <ContactLink type="itchio" label="ITCH.IO" value="linar3.itch.io" href={contact.itchio} hint="JUGAR MIS PROYECTOS" />
         </div>
-        <a className="email-cta" href={`mailto:${contact.email}`} aria-label={`Enviar correo a ${contact.email}`}>✉ CONTACTO EMAIL: {contact.email}</a>
+        <a className="email-cta" href={getEmailComposeUrl(contact.email)} target="_blank" rel="noreferrer" aria-label={`Abrir Gmail para enviar un correo a ${contact.email}`}>✉ ABRIR GMAIL: {contact.email}</a>
       </article>
     </div>
   )
@@ -188,7 +193,7 @@ export default function PokedexShell() {
     }
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
     if (activeSection.id === 'audio' && itemList[selectedItems.audio]?.playUrl) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
-    if (activeSection.id === 'contact') window.location.href = `mailto:${contact.email}`
+    if (activeSection.id === 'contact') window.open(getEmailComposeUrl(contact.email), '_blank', 'noopener,noreferrer')
   }
 
   function resetToWelcome() {
