@@ -114,7 +114,7 @@ function AudioEmptyContent() {
 }
 
 function ProjectSelectionPrompt() {
-  return <div className="project-prompt"><span aria-hidden="true">✦</span><h2>SELECCIONA TU PROYECTO</h2><p>Haz clic en una ficha o usa ▲ / ▼ y presiona A.</p></div>
+  return <div className="project-prompt"><Pokeball className="pokeball--prompt" /><h2>SELECCIONA TU PROYECTO</h2><p>Haz clic en una ficha o usa ▲ / ▼ y presiona K.</p></div>
 }
 
 function SectionContent({ section, selectedItem }) {
@@ -190,14 +190,14 @@ export default function PokedexShell() {
       if (event.key === 'Escape') { if (overlayProject) closeProject(); else resetToWelcome(); return }
       if (overlayProject) return
       if (!started) {
-        if (event.key === 'Enter' || event.key.toLowerCase() === 'a') setStarted(true)
+        if (event.key === 'Enter' || event.key.toLowerCase() === 'k') setStarted(true)
         return
       }
       if (event.key === 'ArrowRight') { event.preventDefault(); cycleSection(1) }
       if (event.key === 'ArrowLeft') { event.preventDefault(); cycleSection(-1) }
       if (event.key === 'ArrowDown') { event.preventDefault(); cycleItem(1) }
       if (event.key === 'ArrowUp') { event.preventDefault(); cycleItem(-1) }
-      if (event.key.toLowerCase() === 'a') handleAButton()
+      if (event.key.toLowerCase() === 'k') handleAButton()
       if (event.key.toLowerCase() === 'b') resetToWelcome()
     }
     window.addEventListener('keydown', handleKeyDown)
@@ -259,7 +259,7 @@ export default function PokedexShell() {
           <nav className="category-nav" aria-label="Secciones del Pokefolio">
             {sections.map((section, index) => (
               <button key={section.id} className={`category-button${started && activeIndex === index ? ' is-active' : ''}`} onClick={() => selectSection(index)} aria-pressed={started && activeIndex === index}>
-                <span className="category-icon" aria-hidden="true">{section.icon}</span><span>{section.label}</span>
+                <span>{section.label}</span>
               </button>
             ))}
           </nav>

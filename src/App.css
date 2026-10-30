@@ -160,14 +160,13 @@
 .console-mark i:last-child { background: #3b82f648; }
 .console-controls { padding: 14px 24px 15px; border-top: 1px solid #ffffff0a; border-radius: 0 0 40px 40px; background: linear-gradient(#162d6b, #0b1736); }
 .category-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.category-button { display: flex; min-height: 51px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border: 1px solid #ffffff25; border-radius: 8px; background: #050a1680; color: #ffffffc4; font-size: 10px; cursor: pointer; transition: .16s ease; }
+.category-button { display: flex; min-height: 51px; align-items: center; justify-content: center; border: 1px solid #ffffff25; border-radius: 8px; background: #050a1680; color: #ffffffc4; font-size: 10px; cursor: pointer; transition: .16s ease; }
 .category-button:hover { border-color: #60a5fa99; background: #3b82f633; }
 .category-button.is-active { border-color: #60a5faaa; background: #3b82f63d; color: #bfdbfe; box-shadow: inset 0 0 15px #3b82f620; }
-.category-icon { font-size: 15px; line-height: 1; }
 .control-row { display: grid; height: 218px; min-height: 218px; box-sizing: border-box; grid-template-columns: 150px 1fr; align-items: center; gap: 18px; padding: 13px 4px 5px; }
 .dpad { position: relative; display: grid; width: 108px; height: 108px; grid-template: repeat(3, 1fr) / repeat(3, 1fr); place-items: center; justify-self: center; }
-.dpad-button { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #070f27; border-radius: 5px; background: linear-gradient(145deg, #234588, #0a1738); color: #ffffffbd; font-size: 12px; cursor: pointer; box-shadow: inset 0 1px #ffffff20, 0 3px 5px #0008; }
-.dpad-button:hover { color: #fff; background: #2563eb; }
+.dpad-button { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #070b10; border-radius: 11px; background: linear-gradient(145deg, #303842 0%, #141a21 52%, #272e36 100%); color: #ffffffbd; font-size: 12px; cursor: pointer; box-shadow: inset 1px 1px 2px #ffffff20, inset -2px -2px 4px #0008, 0 3px 5px #0008; }
+.dpad-button:hover { color: #fff; background: linear-gradient(145deg, #414b56, #202830); }
 .project-visual img, .project-visual video { display: block; width: 100%; height: 100%; min-height: 74px; object-fit: cover; }
 .dpad-up { grid-area: 1 / 2; }.dpad-left { grid-area: 2 / 1; }.dpad-center { grid-area: 2 / 2; width: 35px; height: 35px; background: #08132d; border: 2px solid #070f27; }.dpad-right { grid-area: 2 / 3; }.dpad-down { grid-area: 3 / 2; }
 .mini-card { display: flex; min-width: 0; min-height: 76px; align-items: center; gap: 12px; padding: 11px; border: 1px solid #3b82f655; border-radius: 11px; background: #050a16b8; }
@@ -223,8 +222,7 @@
   .console-mark { padding: 8px 25px 10px; }
   .console-controls { padding: 11px 12px 13px; }
   .category-nav { gap: 5px; }
-  .category-button { min-height: 49px; gap: 4px; font-size: 8px; }
-  .category-icon { font-size: 14px; }
+  .category-button { min-height: 49px; font-size: 8px; }
   .control-row { height: clamp(118px, 22svh, 168px); min-height: clamp(118px, 22svh, 168px); grid-template-columns: 88px 42px minmax(0, 1fr); gap: 4px; padding: 10px 0 4px; }
   .dpad { transform: scale(.82); }
   .mobile-ab-buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -254,7 +252,8 @@
 .audio-empty h2 { margin: 0; font: 8px/1.7 var(--pixel-font); }
 .audio-empty p { max-width: 30em; margin: 0; font: 14px/1.4 'VT323', monospace; }
 .project-prompt { display: flex; min-height: 275px; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; }
-.project-prompt > span { color: #0f380f; font-size: 28px; }
+.project-prompt > .pokeball--prompt { width: 42px; height: 42px; border: 3px solid var(--lcd-dark); background: linear-gradient(#ef4444 0 44%, var(--lcd-dark) 44% 56%, #f5f5f4 56%); }
+.project-prompt > .pokeball--prompt .pokeball__band { width: 14px; height: 14px; border-width: 2px; }
 .project-prompt h2 { margin: 0; font: 9px/1.8 var(--pixel-font); }
 .project-prompt p { max-width: 34em; margin: 0; font: 14px/1.4 'VT323', monospace; }
 
