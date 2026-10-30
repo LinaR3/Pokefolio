@@ -88,7 +88,7 @@ function ContactContent() {
     <div className="screen-content">
       <article className="lcd-card contact-card">
         <div className="trainer-card">
-          <div className="trainer-avatar" role="img" aria-label="Retrato de Lina Reina">LR</div>
+          <img className="trainer-avatar" src="/images/lina-reina-pixel-portrait.png" alt="Retrato pixel art de Lina Reina junto a Umbreon" />
           <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Python · Music Producer</p></div>
         </div>
         <div className="contact-link-list" aria-label="Perfiles profesionales">
