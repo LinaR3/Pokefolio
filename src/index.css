@@ -25,3 +25,10 @@ body { min-width: 320px; min-height: 100vh; margin: 0; }
 button { color: inherit; font: inherit; }
 button:focus-visible { outline: 3px solid #f8d34a; outline-offset: 3px; }
 ::selection { color: #08112a; background: #93c5fd; }
+
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: url('/pokeball-cursor.svg') 16 16, auto; }
+  a, button, [role='button'] { cursor: url('/pokeball-cursor.svg') 16 16, pointer; }
+  input, textarea, [contenteditable='true'] { cursor: text; }
+  :disabled, [aria-disabled='true'] { cursor: not-allowed; }
+}
