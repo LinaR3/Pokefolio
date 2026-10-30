@@ -54,6 +54,7 @@ export const audioProjects = [
     description: 'Perfil musical de Lina Reina en Spotify.',
     role: 'Cantante · Productora musical',
     playUrl: 'https://open.spotify.com/intl-es/artist/2G1e4GLy7AKkTHaBdLfGoO',
+    embedUrl: 'https://open.spotify.com/embed/artist/2G1e4GLy7AKkTHaBdLfGoO?utm_source=generator&theme=0&si=ec701c51e5aa4410',
     linkLabel: 'ESCUCHAR EN SPOTIFY',
     visual: '♫',
     visualLabel: 'Música de Lina Reina',
