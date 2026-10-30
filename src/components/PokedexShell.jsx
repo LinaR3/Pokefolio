@@ -103,6 +103,19 @@ function ContactContent() {
 }
 
 function TrainerStatusCard({ started, activeSection, activeIndex }) {
+  if (started && activeSection.id === 'contact') {
+    return (
+      <a className="mini-card mini-card-link mini-card-contact" href={contact.linkedin} target="_blank" rel="noreferrer" aria-label="Contactar a Lina Reina por LinkedIn">
+        <span className="mini-card-icon" aria-hidden="true">↗</span>
+        <span className="mini-card-copy">
+          <span className="mini-card-kicker">¿HABLAMOS DE UNA OPORTUNIDAD?</span>
+          <strong>CONTACTAR EN LINKEDIN</strong>
+        </span>
+        <span className="mini-card-status" aria-hidden="true">↗</span>
+      </a>
+    )
+  }
+
   const content = <><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><span className="mini-card-copy"><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></span><span className="mini-card-status">ONLINE</span></>
 
   if (!started) return <a className="mini-card mini-card-link" href={contact.linkedin} target="_blank" rel="noreferrer" aria-label="Visitar LinkedIn de Lina Reina">{content}</a>
