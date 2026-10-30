@@ -117,10 +117,10 @@
 .spotify-embed { display: block; width: 100%; height: 152px; margin: 8px 0; border: 0; border-radius: 12px; }
 .project-play small { color: #b8d66a; font: 5px var(--pixel-font); }
 .detail-hint { margin: 0; text-align: center; font: 5px var(--pixel-font); opacity: .7; }
-.project-selection { min-width: 0; }
+.project-selection { display: flex; width: 100%; height: 100%; min-width: 0; min-height: 0; flex-direction: column; overflow: hidden; }
 .project-selection-heading { display: flex; justify-content: space-between; gap: 6px; margin-bottom: 6px; color: #93c5fd; font: 6px var(--pixel-font); }
 .project-selection-heading small { color: #ffffff80; font: inherit; white-space: nowrap; }
-.project-selector-list { display: flex; max-height: 190px; flex-direction: column; gap: 6px; overflow-y: auto; padding: 2px 5px 2px 2px; scrollbar-color: #60a5fa #0b1736; scrollbar-width: thin; }
+.project-selector-list { display: flex; min-height: 0; flex: 1; flex-direction: column; gap: 6px; overflow-y: auto; padding: 2px 5px 2px 2px; scrollbar-color: #60a5fa #0b1736; scrollbar-width: thin; }
 .project-summary { display: flex; width: 100%; min-width: 0; flex: 0 0 auto; align-items: center; gap: 7px; padding: 6px; border: 1px solid #60a5fa40; border-radius: 6px; background: #050a1680; color: #fff; text-align: left; cursor: pointer; }
 .project-summary:hover { border-color: #93c5fd; background: #2563eb33; }
 .project-summary--selected { border-color: #f5c84c; background: #2563eb45; box-shadow: 0 0 0 1px #f5c84c44; }
@@ -163,7 +163,7 @@
 .category-button:hover { border-color: #60a5fa99; background: #3b82f633; }
 .category-button.is-active { border-color: #60a5faaa; background: #3b82f63d; color: #bfdbfe; box-shadow: inset 0 0 15px #3b82f620; }
 .category-icon { font-size: 15px; line-height: 1; }
-.control-row { display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 18px; padding: 13px 4px 5px; }
+.control-row { display: grid; height: 218px; min-height: 218px; box-sizing: border-box; grid-template-columns: 150px 1fr; align-items: center; gap: 18px; padding: 13px 4px 5px; }
 .dpad { position: relative; display: grid; width: 108px; height: 108px; grid-template: repeat(3, 1fr) / repeat(3, 1fr); place-items: center; justify-self: center; }
 .dpad-button { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #070f27; border-radius: 5px; background: linear-gradient(145deg, #234588, #0a1738); color: #ffffffbd; font-size: 12px; cursor: pointer; box-shadow: inset 0 1px #ffffff20, 0 3px 5px #0008; }
 .dpad-button:hover { color: #fff; background: #2563eb; }
@@ -198,7 +198,7 @@
   .gameboy-display-row { gap: 0; padding: 11px 10px 5px; }
   .side-panel { display: none; }
   .display-frame { min-height: 0; padding: 7px; }
-  .pokedex-screen { height: clamp(230px, calc(100svh - 340px), 470px); min-height: 0; }
+  .pokedex-screen { height: clamp(200px, calc(78svh - 218px), 470px); min-height: 0; }
   .welcome-screen { height: 100%; min-height: 0; }
   .app-screen { height: 100%; min-height: 0; max-height: none; padding: 12px 10px 9px; }
   .welcome-screen { padding: 24px 10px 17px; }
@@ -224,11 +224,11 @@
   .category-nav { gap: 5px; }
   .category-button { min-height: 49px; gap: 4px; font-size: 8px; }
   .category-icon { font-size: 14px; }
-  .control-row { grid-template-columns: 88px 42px minmax(0, 1fr); gap: 4px; padding: 10px 0 4px; }
+  .control-row { height: clamp(118px, 22svh, 168px); min-height: clamp(118px, 22svh, 168px); grid-template-columns: 88px 42px minmax(0, 1fr); gap: 4px; padding: 10px 0 4px; }
   .dpad { transform: scale(.82); }
   .mobile-ab-buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .mobile-ab-buttons .ab-button { width: 35px; height: 35px; font-size: 8px; }
-  .project-selector-list { max-height: 190px; overflow-y: auto; gap: 5px; padding: 2px 5px 2px 2px; }
+  .project-selector-list { max-height: none; overflow-y: auto; gap: 5px; padding: 2px 5px 2px 2px; }
   .project-summary { flex: 0 0 auto; }
   .project-selection-heading { font-size: 5px; }
   .project-summary-copy strong { font-size: 5px; }
