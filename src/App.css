@@ -233,29 +233,29 @@
   71.667% { background-position: 20% 100%; }
   72.667% { background-position: 40% 100%; }
   73.667% { background-position: 60% 100%; }
-  74.667% { background-position: 80% 100%; }
-  75.667% { background-position: 100% 100%; }
-  76.667% { background-position: 40% 75%; }
-  77.667% { background-position: 60% 75%; }
-  78.667% { background-position: 80% 75%; }
-  79.667% { background-position: 100% 75%; }
-  80.667% { background-position: 0% 100%; }
-  81.667% { background-position: 20% 100%; }
-  82.667% { background-position: 40% 100%; }
-  83.667% { background-position: 60% 100%; }
-  84.667% { background-position: 80% 100%; }
-  85.667% { background-position: 100% 100%; }
-  86.667% { background-position: 40% 75%; }
-  87.667% { background-position: 60% 75%; }
-  88.667% { background-position: 80% 75%; }
-  89.667% { background-position: 100% 75%; }
-  90.667% { background-position: 0% 100%; }
-  91.667% { background-position: 20% 100%; }
-  92.667% { background-position: 40% 100%; }
-  93.667% { background-position: 60% 100%; }
-  94.667% { background-position: 80% 100%; }
-  95.667% { background-position: 100% 100%; }
-  100% { background-position: 100% 100%; }
+  74.667% { background-position: 40% 75%; }
+  75.667% { background-position: 60% 75%; }
+  76.667% { background-position: 80% 75%; }
+  77.667% { background-position: 100% 75%; }
+  78.667% { background-position: 0% 100%; }
+  79.667% { background-position: 20% 100%; }
+  80.667% { background-position: 40% 100%; }
+  81.667% { background-position: 60% 100%; }
+  82.667% { background-position: 40% 75%; }
+  83.667% { background-position: 60% 75%; }
+  84.667% { background-position: 80% 75%; }
+  85.667% { background-position: 100% 75%; }
+  86.667% { background-position: 0% 100%; }
+  87.667% { background-position: 20% 100%; }
+  88.667% { background-position: 40% 100%; }
+  89.667% { background-position: 60% 100%; }
+  90.667% { background-position: 40% 75%; }
+  91.667% { background-position: 60% 75%; }
+  92.667% { background-position: 80% 75%; }
+  93.667% { background-position: 100% 75%; }
+  94.667% { background-position: 0% 100%; }
+  95.667% { background-position: 20% 100%; }
+  100% { background-position: 20% 100%; }
 }
 @keyframes lina-projects-story-path {
   0% { left: 93%; opacity: 0; }
@@ -296,7 +296,6 @@
 .console-footer button { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .console-footer button:hover { color: #bfdbfe; }
 .console-footer b { color: #f87171; }
-
 @media (max-width: 620px) {
   .splash-top { font-size: 8px; letter-spacing: 1px; }
   .splash-center { padding: 32px 0; }
@@ -358,7 +357,7 @@
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .trainer-hug-sprite::before { animation: none; background-position: 50% 95.24%; }
   .screen-footer-runner { animation: none; background-position: 33.333% 0; left: 0; transform: scaleX(-1); }
-  .screen-footer--projects .screen-footer-runner { left: 50%; transform: translateX(-50%); opacity: 1; background-position: 100% 100%; }
+  .screen-footer--projects .screen-footer-runner { left: 50%; transform: translateX(-50%); opacity: 1; background-position: 60% 100%; }
 }
 
 .audio-empty { display: flex; min-height: 240px; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
