@@ -45,7 +45,6 @@
 .led--blue { background: #60a5fa; box-shadow: 0 0 10px #60a5fa; }
 @keyframes led-pulse { 50% { opacity: .35; } }
 .side-mark { color: #f5c84c; font-size: 24px; }
-.side-mark--blue { color: #93c5fd; font: 9px var(--pixel-font); }
 .ab-buttons { display: flex; flex-direction: column; gap: 14px; }
 .ab-button { display: grid; width: 43px; height: 43px; place-items: center; border: 0; border-radius: 50%; color: #fff; font: 10px var(--pixel-font); cursor: pointer; box-shadow: 0 4px #0006, inset 0 1px #ffffff55; transition: transform .1s, filter .1s; }
 .ab-button:hover { filter: brightness(1.18); }

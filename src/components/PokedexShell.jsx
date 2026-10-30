@@ -243,7 +243,6 @@ export default function PokedexShell() {
               <button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button>
               <button className="ab-button ab-button--b" onClick={resetToWelcome} aria-label="B, volver al inicio">B</button>
             </div>
-            <span className="side-mark side-mark--blue">AZUL</span>
           </aside>
         </div>
 
