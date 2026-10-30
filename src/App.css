@@ -172,7 +172,11 @@
 .contact-link-arrow { color: #164f1a; font: 11px var(--pixel-font); text-align: center; }
 .email-cta { display: inline-flex; align-items: center; justify-content: center; padding: 9px 12px; border-radius: 4px; background: var(--lcd-dark); color: var(--lcd-light); font: 7px var(--pixel-font); text-decoration: none; }
 .email-cta:focus-visible { outline: 3px solid #164f1a; outline-offset: 2px; }
-.screen-footer { display: flex; justify-content: space-between; border-top: 1px solid #0f380f45; padding-top: 7px; font: 6px var(--pixel-font); }
+.screen-footer { position: relative; display: flex; justify-content: space-between; border-top: 1px solid #0f380f45; padding-top: 7px; font: 6px var(--pixel-font); }
+.screen-footer-runway { --runner-width: clamp(22px, 4.5vw, 32px); position: absolute; top: -42px; right: 12%; left: 12%; height: 42px; pointer-events: none; }
+.screen-footer-runner { position: absolute; bottom: 0; left: 0; display: block; width: var(--runner-width); height: 42px; background-image: url("/images/sprite-sheets/lina-umbreon-walk.png"); background-repeat: no-repeat; background-size: 400% 100%; background-position: 0 0; image-rendering: pixelated; animation: lina-walk-frames .64s steps(3, end) infinite, lina-walk-runway 16s linear infinite; }
+@keyframes lina-walk-frames { from { background-position: 0 0; } to { background-position: 100% 0; } }
+@keyframes lina-walk-runway { 0% { left: 0; transform: scaleX(1); } 49.5% { left: calc(100% - var(--runner-width)); transform: scaleX(1); } 50% { left: calc(100% - var(--runner-width)); transform: scaleX(-1); } 99.5% { left: 0; transform: scaleX(-1); } 100% { left: 0; transform: scaleX(1); } }
 .screen-footer span:first-child { color: #164f1a; }
 .console-mark { display: flex; align-items: center; justify-content: space-around; gap: 12px; padding: 9px 36px 13px; color: #93c5fd8c; font: 7px var(--pixel-font); letter-spacing: 2px; }
 .console-mark i { height: 14px; width: 14px; border: 1px solid #ffffff48; border-radius: 50%; background: #ef444448; }
@@ -265,6 +269,7 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .trainer-hug-sprite::before { animation: none; background-position: 50% 95.24%; }
+  .screen-footer-runner { animation: none; background-position: 33.333% 0; left: 0; transform: none; }
 }
 
 .audio-empty { display: flex; min-height: 240px; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
