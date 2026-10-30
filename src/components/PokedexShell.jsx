@@ -131,13 +131,16 @@ function AudioEmptyContent() {
   return <div className="lcd-card audio-empty"><span aria-hidden="true">♫</span><h2>MUESTRAS EN CAMINO</h2><p>Pronto...</p></div>
 }
 
-function ProjectSelectionPrompt() {
-  return <div className="project-prompt"><Pokeball className="pokeball--prompt" /><h2>SELECCIONA TU PROYECTO</h2><p>Haz clic en una ficha o usa ▲ / ▼ y presiona K.</p></div>
+function ProjectSelectionPrompt({ title = 'SELECCIONA TU PROYECTO' }) {
+  return <div className="project-prompt"><Pokeball className="pokeball--prompt" /><h2>{title}</h2><p>Haz clic en una ficha o usa ▲ / ▼ y presiona K.</p></div>
 }
 
 function SectionContent({ section, selectedItem }) {
   if (section === 'projects') return <ProjectSelectionPrompt />
-  if (section === 'audio') return audioProjects.length ? <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" /> : <AudioEmptyContent />
+  if (section === 'audio') {
+    if (!audioProjects.length) return <AudioEmptyContent />
+    return selectedItem == null ? <ProjectSelectionPrompt title="SELECCIONA UNA MUESTRA DE AUDIO" /> : <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" />
+  }
   return <ContactContent />
 }
 
@@ -145,7 +148,7 @@ export default function PokedexShell() {
   const [started, setStarted] = useState(false)
   const [screenPowering, setScreenPowering] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
-  const [selectedItems, setSelectedItems] = useState({ projects: 0, audio: 0 })
+  const [selectedItems, setSelectedItems] = useState({ projects: 0, audio: null })
   const [overlayProject, setOverlayProject] = useState(null)
   const [overlayClosing, setOverlayClosing] = useState(false)
   const [overlayOrigin, setOverlayOrigin] = useState(null)
@@ -161,7 +164,9 @@ export default function PokedexShell() {
 
   function selectSection(index) {
     if (!started) startAdventure()
-    setActiveIndex((index + sections.length) % sections.length)
+    const nextIndex = (index + sections.length) % sections.length
+    if (sections[nextIndex].id === 'audio') setSelectedItems((current) => ({ ...current, audio: null }))
+    setActiveIndex(nextIndex)
   }
 
   function cycleSection(direction) {
@@ -173,7 +178,12 @@ export default function PokedexShell() {
       cycleSection(direction)
       return
     }
-    setSelectedItems((current) => ({ ...current, [activeSection.id]: (current[activeSection.id] + direction + itemList.length) % itemList.length }))
+    setSelectedItems((current) => ({
+      ...current,
+      [activeSection.id]: current[activeSection.id] == null
+        ? (direction > 0 ? 0 : itemList.length - 1)
+        : (current[activeSection.id] + direction + itemList.length) % itemList.length,
+    }))
   }
 
   function openProject(project) {
@@ -199,7 +209,7 @@ export default function PokedexShell() {
       return
     }
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
-    if (activeSection.id === 'audio' && itemList[selectedItems.audio]?.playUrl) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
+    if (activeSection.id === 'audio' && selectedItems.audio != null && itemList[selectedItems.audio]?.playUrl) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
     if (activeSection.id === 'contact') window.open(getEmailComposeUrl(contact.email), '_blank', 'noopener,noreferrer')
   }
 
