@@ -177,30 +177,30 @@
 .screen-footer-runner { position: absolute; bottom: 0; left: 0; display: block; width: var(--runner-width); height: 42px; background-image: url("/images/sprite-sheets/lina-umbreon-walk.png"); background-repeat: no-repeat; background-size: 400% 100%; background-position: 0 0; image-rendering: pixelated; animation: lina-walk-frames .64s steps(3, end) infinite, lina-walk-runway 16s linear infinite; }
 @keyframes lina-walk-frames { from { background-position: 0 0; } to { background-position: 100% 0; } }
 @keyframes lina-walk-runway { 0% { left: 0; transform: scaleX(-1); } 49.5% { left: calc(100% - var(--runner-width)); transform: scaleX(-1); } 50% { left: calc(100% - var(--runner-width)); transform: scaleX(1); } 99.5% { left: 0; transform: scaleX(1); } 100% { left: 0; transform: scaleX(-1); } }
-.screen-footer--projects .screen-footer-runway { --runner-width: 62px; top: -54px; left: 12%; right: 12%; height: 54px; }
+.screen-footer--projects .screen-footer-runway { --runner-width: 62px; top: -54px; left: 12%; right: 0; height: 54px; }
 /* The atlas uses 256x224 frame windows on a 384x336 pitch, leaving half-frame transparent gutters. */
-.screen-footer--projects .screen-footer-runner { left: 0; width: var(--runner-width); height: 54px; background-image: url("/images/sprite-sheets/lina-pokeball-story-30f.png"); background-size: 850% 700%; animation: lina-projects-story-frames 12s steps(1, end) infinite, lina-projects-story-path 12s linear infinite; }
+.screen-footer--projects .screen-footer-runner { left: 93%; width: var(--runner-width); height: 54px; transform: translateX(-50%); background-image: url("/images/sprite-sheets/lina-pokeball-story-30f.png"); background-size: 850% 700%; animation: lina-projects-story-frames 12s steps(1, end) infinite, lina-projects-story-path 12s linear infinite; }
 @keyframes lina-projects-story-frames {
   0% { background-position: 0 0; }
-  3.333% { background-position: 20% 0; }
-  6.667% { background-position: 40% 0; }
-  10% { background-position: 60% 0; }
-  13.333% { background-position: 80% 0; }
-  16.667% { background-position: 100% 0; }
-  20% { background-position: 0 25%; }
-  23.333% { background-position: 20% 25%; }
-  26.667% { background-position: 40% 25%; }
-  30% { background-position: 60% 25%; }
-  33.333% { background-position: 80% 25%; }
-  36.667% { background-position: 100% 25%; }
-  40% { background-position: 0 50%; }
-  43.333% { background-position: 20% 50%; }
-  46.667% { background-position: 40% 50%; }
-  50% { background-position: 60% 50%; }
-  53.333% { background-position: 80% 50%; }
-  56.667% { background-position: 100% 50%; }
-  60% { background-position: 0 75%; }
-  63.333% { background-position: 20% 75%; }
+  4.167% { background-position: 20% 0; }
+  8.333% { background-position: 40% 0; }
+  12.5% { background-position: 60% 0; }
+  16.667% { background-position: 80% 0; }
+  20.833% { background-position: 100% 0; }
+  25% { background-position: 0 25%; }
+  29.167% { background-position: 20% 25%; }
+  33.333% { background-position: 40% 25%; }
+  36.667% { background-position: 60% 25%; }
+  40% { background-position: 80% 25%; }
+  43.333% { background-position: 100% 25%; }
+  46.667% { background-position: 0 50%; }
+  50% { background-position: 20% 50%; }
+  52.381% { background-position: 40% 50%; }
+  54.762% { background-position: 60% 50%; }
+  57.143% { background-position: 80% 50%; }
+  59.524% { background-position: 100% 50%; }
+  61.905% { background-position: 0 75%; }
+  64.286% { background-position: 20% 75%; }
   66.667% { background-position: 40% 75%; }
   70% { background-position: 60% 75%; }
   73.333% { background-position: 80% 75%; }
@@ -213,11 +213,12 @@
   96.667%, 100% { background-position: 100% 100%; }
 }
 @keyframes lina-projects-story-path {
-  0% { left: calc(100% - var(--runner-width)); opacity: 0; }
-  2% { left: calc(100% - var(--runner-width)); opacity: 1; }
-  20%, 66.667% { left: 0; opacity: 1; }
-  96% { left: 60%; opacity: 1; }
-  100% { left: 60%; opacity: 0; }
+  0% { left: 93%; opacity: 0; }
+  2% { left: 93%; opacity: 1; }
+  32% { left: 27%; opacity: 1; }
+  33.333%, 66.667% { left: 27%; opacity: 1; }
+  96.667% { left: 93%; opacity: 1; }
+  100% { left: 93%; opacity: 0; }
 }
 .screen-footer span:first-child { color: #164f1a; }
 .console-mark { display: flex; align-items: center; justify-content: space-around; gap: 12px; padding: 9px 36px 13px; color: #93c5fd8c; font: 7px var(--pixel-font); letter-spacing: 2px; }
