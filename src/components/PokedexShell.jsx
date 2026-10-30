@@ -103,7 +103,7 @@ function ContactContent() {
 }
 
 function AudioEmptyContent() {
-  return <div className="lcd-card audio-empty"><span aria-hidden="true">♫</span><h2>MUESTRAS EN CAMINO</h2><p>Aquí aparecerán trabajos de audio y SFX cuando sus demos estén listas.</p></div>
+  return <div className="lcd-card audio-empty"><span aria-hidden="true">♫</span><h2>MUESTRAS EN CAMINO</h2><p>Pronto...</p></div>
 }
 
 function ProjectSelectionPrompt() {
