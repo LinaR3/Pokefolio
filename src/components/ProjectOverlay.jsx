@@ -36,7 +36,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
           <div className="project-overlay__preview">
             <ProjectPreview project={project} />
             <a className="project-overlay__play" href={project.playUrl} target="_blank" rel="noreferrer">
-              ▶ JUGAR DEMO ↗
+              {project.playLabel ?? '▶ JUGAR DEMO ↗'}
             </a>
           </div>
           <article className="project-overlay__copy">
