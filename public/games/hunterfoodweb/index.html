@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#050916">
+    <title>HunterFoodWeb · Lina Reina</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <main id="unity-container" class="unity-desktop" aria-label="Juego HunterFoodWeb">
+      <canvas id="unity-canvas" width="960" height="600" tabindex="-1" aria-label="Juego HunterFoodWeb"></canvas>
+      <div id="unity-loading-bar" role="status" aria-live="polite">
+        <strong>CARGANDO HUNTERFOOD</strong>
+        <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+      </div>
+      <div id="unity-warning" role="alert"></div>
+      <div id="unity-footer" aria-hidden="true">
+        <div id="unity-logo-title-footer"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">HunterFood</div>
+      </div>
+    </main>
+    <script>
+      const canvas = document.querySelector('#unity-canvas')
+      const buildUrl = 'Build'
+      const config = {
+        arguments: [],
+        dataUrl: `${buildUrl}/HunterFoodWeb.data.br`,
+        frameworkUrl: `${buildUrl}/HunterFoodWeb.framework.js.br`,
+        codeUrl: `${buildUrl}/HunterFoodWeb.wasm.br`,
+        streamingAssetsUrl: 'StreamingAssets',
+        companyName: 'DefaultCompany',
+        productName: 'HunterFood',
+        productVersion: '0.1.0',
+        showBanner: unityShowBanner,
+      }
+
+      function unityShowBanner(message, type) {
+        const warning = document.querySelector('#unity-warning')
+        const banner = document.createElement('div')
+        banner.textContent = message
+        banner.className = type === 'error' ? 'unity-warning--error' : 'unity-warning--notice'
+        warning.replaceChildren(banner)
+        warning.hidden = false
+        if (type !== 'error') window.setTimeout(() => { warning.hidden = true }, 5000)
+      }
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        document.querySelector('#unity-container').classList.replace('unity-desktop', 'unity-mobile')
+        canvas.classList.add('unity-mobile')
+      }
+
+      const loadingBar = document.querySelector('#unity-loading-bar')
+      const progressBar = document.querySelector('#unity-progress-bar-full')
+      const script = document.createElement('script')
+      script.src = `${buildUrl}/HunterFoodWeb.loader.js`
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBar.style.width = `${Math.round(progress * 100)}%`
+        }).then((unityInstance) => {
+          loadingBar.hidden = true
+          document.querySelector('#unity-fullscreen-button').onclick = () => unityInstance.SetFullscreen(1)
+        }).catch((message) => unityShowBanner(message, 'error'))
+      }
+      script.onerror = () => unityShowBanner('No se pudo cargar el juego. Inténtalo de nuevo.', 'error')
+      document.body.append(script)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+:root { color-scheme: dark; font-family: 'JetBrains Mono', 'Inter', monospace; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #050916; }
+#unity-container { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; background: #050916; }
+#unity-canvas { display: block; width: min(100vw, 160vh); height: min(100vh, 62.5vw); aspect-ratio: 16 / 10; max-width: 100%; max-height: 100%; outline: 0; background: #9bbc0f; touch-action: none; }
+.unity-mobile #unity-canvas { width: min(100vw, 160dvh); height: min(100dvh, 62.5vw); }
+#unity-loading-bar { position: fixed; left: 50%; top: 50%; width: min(300px, 72vw); display: grid; gap: 12px; justify-items: center; transform: translate(-50%, -50%); color: #d9f99d; font-size: 12px; letter-spacing: .08em; text-align: center; }
+#unity-loading-bar[hidden], #unity-warning[hidden] { display: none; }
+#unity-progress-bar-empty { width: 100%; height: 10px; overflow: hidden; border: 1px solid #9bbc0f; border-radius: 999px; background: #101a0a; }
+#unity-progress-bar-full { width: 0; height: 100%; background: #9bbc0f; box-shadow: 0 0 12px #9bbc0f99; transition: width .12s linear; }
+#unity-warning { position: fixed; z-index: 3; left: 50%; top: 12px; width: min(520px, calc(100% - 24px)); transform: translateX(-50%); }
+#unity-warning > div { padding: 12px 16px; border: 1px solid #9bbc0f; border-radius: 8px; background: #101a0a; color: #e5f7ad; font-size: 13px; line-height: 1.5; }
+#unity-warning .unity-warning--error { border-color: #f87171; background: #2b1010; color: #fecaca; }
+#unity-footer { display: none; }

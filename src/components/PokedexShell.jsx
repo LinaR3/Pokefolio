@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Screen from './Screen.jsx'
 import SplashScreen from './SplashScreen.jsx'
 import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
@@ -156,24 +156,24 @@ export default function PokedexShell() {
   const activeSection = sections[activeIndex]
   const itemList = activeSection.id === 'audio' ? audioProjects : gameProjects
 
-  function startAdventure() {
+  const startAdventure = useCallback(() => {
     setStarted(true)
     setScreenPowering(true)
     window.setTimeout(() => setScreenPowering(false), 480)
-  }
+  }, [])
 
-  function selectSection(index) {
+  const selectSection = useCallback((index) => {
     if (!started) startAdventure()
     const nextIndex = (index + sections.length) % sections.length
     if (sections[nextIndex].id === 'audio') setSelectedItems((current) => ({ ...current, audio: null }))
     setActiveIndex(nextIndex)
-  }
+  }, [started, startAdventure])
 
-  function cycleSection(direction) {
+  const cycleSection = useCallback((direction) => {
     selectSection(activeIndex + direction)
-  }
+  }, [activeIndex, selectSection])
 
-  function cycleItem(direction) {
+  const cycleItem = useCallback((direction) => {
     if (activeSection.id !== 'projects' && activeSection.id !== 'audio') {
       cycleSection(direction)
       return
@@ -184,26 +184,26 @@ export default function PokedexShell() {
         ? (direction > 0 ? 0 : itemList.length - 1)
         : (current[activeSection.id] + direction + itemList.length) % itemList.length,
     }))
-  }
+  }, [activeSection.id, cycleSection, itemList.length])
 
-  function openProject(project) {
+  const openProject = useCallback((project) => {
     const frame = displayFrameRef.current?.getBoundingClientRect()
     if (!frame) return
     setOverlayOrigin({ left: frame.left, top: frame.top, width: frame.width, height: frame.height })
     setOverlayClosing(false)
     setOverlayProject(project)
-  }
+  }, [])
 
-  function closeProject() {
+  const closeProject = useCallback(() => {
     if (!overlayProject || overlayClosing) return
     setOverlayClosing(true)
     window.setTimeout(() => {
       setOverlayProject(null)
       setOverlayClosing(false)
     }, 650)
-  }
+  }, [overlayProject, overlayClosing])
 
-  function handleAButton() {
+  const handleAButton = useCallback(() => {
     if (!started) {
       startAdventure()
       return
@@ -211,18 +211,22 @@ export default function PokedexShell() {
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
     if (activeSection.id === 'audio' && selectedItems.audio != null && itemList[selectedItems.audio]?.playUrl) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
     if (activeSection.id === 'contact') window.open(getEmailComposeUrl(contact.email), '_blank', 'noopener,noreferrer')
-  }
+  }, [started, startAdventure, activeSection.id, itemList, selectedItems, openProject])
 
-  function resetToWelcome() {
+  const resetToWelcome = useCallback(() => {
     setStarted(false)
     setActiveIndex(0)
-  }
+  }, [])
 
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.altKey || event.ctrlKey || event.metaKey) return
       if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return
-      if (event.key === 'Escape') { if (overlayProject) closeProject(); else resetToWelcome(); return }
+      if (event.key === 'Escape') {
+        if (overlayProject) return
+        resetToWelcome()
+        return
+      }
       if (overlayProject) return
       if (!started) {
         if (event.key === 'Enter' || event.key.toLowerCase() === 'k') startAdventure()
@@ -237,7 +241,7 @@ export default function PokedexShell() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [started, activeIndex, activeSection.id, selectedItems, itemList, overlayProject])
+  }, [started, activeIndex, activeSection.id, selectedItems, itemList, overlayProject, startAdventure, cycleItem, cycleSection, handleAButton, resetToWelcome])
 
   function handleUpDown(direction) {
     if (!started) setStarted(true)
