@@ -24,7 +24,7 @@
 .splash-index { color: #6b7280; font: 7px var(--pixel-font); white-space: nowrap; }
 .splash-index b { color: #60a5fa; }
 .gameboy {
-  width: min(100%, 820px); position: relative; z-index: 1; overflow: hidden; border-radius: 26px 26px 42px 42px;
+  width: min(100%, 620px); position: relative; z-index: 1; overflow: hidden; border-radius: 26px 26px 42px 42px;
   background: linear-gradient(155deg, #21469b 0%, #162d6b 40%, #0b1736 100%);
   box-shadow: 0 0 0 2px #3b82f6, 0 0 0 6px #0b1736, 0 22px 90px #2563eb66, inset 0 1px #ffffff33;
 }
