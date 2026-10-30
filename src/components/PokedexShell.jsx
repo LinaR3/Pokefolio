@@ -143,6 +143,7 @@ function SectionContent({ section, selectedItem }) {
 
 export default function PokedexShell() {
   const [started, setStarted] = useState(false)
+  const [screenPowering, setScreenPowering] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [selectedItems, setSelectedItems] = useState({ projects: 0, audio: 0 })
   const [overlayProject, setOverlayProject] = useState(null)
@@ -152,8 +153,14 @@ export default function PokedexShell() {
   const activeSection = sections[activeIndex]
   const itemList = activeSection.id === 'audio' ? audioProjects : gameProjects
 
-  function selectSection(index) {
+  function startAdventure() {
     setStarted(true)
+    setScreenPowering(true)
+    window.setTimeout(() => setScreenPowering(false), 480)
+  }
+
+  function selectSection(index) {
+    if (!started) startAdventure()
     setActiveIndex((index + sections.length) % sections.length)
   }
 
@@ -188,7 +195,7 @@ export default function PokedexShell() {
 
   function handleAButton() {
     if (!started) {
-      setStarted(true)
+      startAdventure()
       return
     }
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
@@ -208,7 +215,7 @@ export default function PokedexShell() {
       if (event.key === 'Escape') { if (overlayProject) closeProject(); else resetToWelcome(); return }
       if (overlayProject) return
       if (!started) {
-        if (event.key === 'Enter' || event.key.toLowerCase() === 'k') setStarted(true)
+        if (event.key === 'Enter' || event.key.toLowerCase() === 'k') startAdventure()
         return
       }
       if (event.key === 'ArrowRight') { event.preventDefault(); cycleSection(1) }
@@ -247,8 +254,8 @@ export default function PokedexShell() {
 
           <div className="display-frame" ref={displayFrameRef}>
             <div className="scanlines" aria-hidden="true" />
-            <Screen>
-              {!started ? <WelcomeScreen onStart={() => setStarted(true)} /> : (
+            <Screen isPowering={screenPowering}>
+              {!started ? <WelcomeScreen onStart={startAdventure} /> : (
                 <div className="app-screen">
                   <header className="screen-heading">
                     <span className="screen-number">{activeSection.number}</span>
