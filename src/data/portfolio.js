@@ -13,44 +13,8 @@ export const gameProjects = [
   },
 ]
 
-export const audioProjects = [
-  {
-    name: 'Bosque de Cristal',
-    status: 'READY',
-    description: 'Paisaje sonoro con viento, hojas cristalinas y capas ambientales para una zona fantástica.',
-    role: 'Composición y diseño de ambientes',
-    members: 'Lina Reina',
-    engine: 'Reaper · síntesis',
-    playUrl: 'https://example.com/?audio=bosque-de-cristal',
-    visual: '🌲',
-    visualLabel: 'Bosque fantástico de la demo sonora',
-    theme: 'green',
-  },
-  {
-    name: 'Señales de Combate',
-    status: 'IN PROGRESS',
-    description: 'Paquete de señales de interfaz, impactos y sonidos cortos para un juego de acción.',
-    role: 'Diseño de SFX e integración',
-    members: 'Lina Reina y Dani Cruz',
-    engine: 'Audacity · Unity Audio',
-    playUrl: 'https://example.com/?audio=senales-de-combate',
-    visual: '⚡',
-    visualLabel: 'Efecto eléctrico de Señales de Combate',
-    theme: 'yellow',
-  },
-  {
-    name: 'Órbita de Neón',
-    status: 'SUSPENDIDO',
-    description: 'Boceto de música electrónica procedural para una carrera arcade espacial.',
-    role: 'Composición y prototipo procedural',
-    members: 'Lina Reina',
-    engine: 'Ableton Live · MIDI',
-    playUrl: 'https://example.com/?audio=orbita-de-neon',
-    visual: '🪐',
-    visualLabel: 'Planeta neón de Órbita de Neón',
-    theme: 'pink',
-  },
-]
+// Añade muestras reales cuando estén disponibles.
+export const audioProjects = []
 
 export const contact = {
   email: 'linareinap3@gmail.com',

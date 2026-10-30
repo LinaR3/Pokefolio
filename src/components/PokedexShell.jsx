@@ -102,13 +102,17 @@ function ContactContent() {
   )
 }
 
+function AudioEmptyContent() {
+  return <div className="lcd-card audio-empty"><span aria-hidden="true">♫</span><h2>MUESTRAS EN CAMINO</h2><p>Aquí aparecerán trabajos de audio y SFX cuando sus demos estén listas.</p></div>
+}
+
 function ProjectSelectionPrompt() {
   return <div className="project-prompt"><span aria-hidden="true">✦</span><h2>SELECCIONA TU PROYECTO</h2><p>Elige una ficha abajo y presiona A para comenzar.</p></div>
 }
 
 function SectionContent({ section, selectedItem }) {
   if (section === 'projects') return <ProjectSelectionPrompt />
-  if (section === 'audio') return <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" />
+  if (section === 'audio') return audioProjects.length ? <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" /> : <AudioEmptyContent />
   return <ContactContent />
 }
 
@@ -156,7 +160,7 @@ export default function PokedexShell() {
       return
     }
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
-    if (activeSection.id === 'audio') window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
+    if (activeSection.id === 'audio' && itemList.length) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
     if (activeSection.id === 'contact') window.location.href = `mailto:${contact.email}`
   }
 
@@ -255,7 +259,7 @@ export default function PokedexShell() {
               <button className="dpad-button dpad-down" onClick={() => handleUpDown(1)} aria-label="Elemento siguiente">▼</button>
             </div>
             <div className="mobile-ab-buttons"><button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button><button className="ab-button ab-button--b" onClick={resetToWelcome} aria-label="B, volver al inicio">B</button></div>
-            {started && (activeSection.id === 'projects' || activeSection.id === 'audio') ? (
+            {started && (activeSection.id === 'projects' || (activeSection.id === 'audio' && itemList.length > 0)) ? (
               <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => { setSelectedItems((current) => ({ ...current, [activeSection.id]: index })); if (activeSection.id === 'projects') openProject(gameProjects[index]) }} />
             ) : (
               <div className="mini-card"><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><div><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></div><span className="mini-card-status">ONLINE</span></div>
