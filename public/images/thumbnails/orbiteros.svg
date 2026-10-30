@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" shape-rendering="crispEdges">
+  <path fill="#173f2e" d="M8 2h64v2h4v4h2v64h-2v4h-4v2H8v-2H4v-4H2V8h2V4h4z"/>
+  <path fill="#eef7dd" d="M10 6h60v2h4v4h2v56h-2v4h-4v2H10v-2H6v-4H4V12h2V8h4z"/>
+  <g fill="#78a66d">
+    <path d="M11 11h6v6h-6zM63 11h6v6h-6zM11 63h6v6h-6zM63 63h6v6h-6z"/>
+  </g>
+  <g fill="#a8c795">
+    <path d="M21 18h2v6h-2zM19 20h6v2h-6z"/>
+  </g>
+  <!-- Nave y planeta -->
+  <g stroke="#173f2e" stroke-width="2" stroke-linejoin="miter">
+    <circle cx="55" cy="29" r="7" fill="#9fcce0"/>
+    <path fill="#d6e8d3" d="M23 45h8v-6h8v-5h8v5h6v7h-6v5h-8v6h-8v-6h-8z"/>
+    <path fill="#79b9c0" d="M34 39h7v5h-7zM43 44h7v5h-7z"/>
+    <path fill="#e95454" d="M28 46h-7v4h7z"/>
+    <path fill="#eebf4c" d="M35 58h4v6h-4zM44 58h4v6h-4z"/>
+    <path fill="#173f2e" d="M55 28h3v3h-3z"/>
+  </g>
+  <path fill="#78a66d" d="M21 65h38v2H21z"/>
+</svg>

@@ -99,25 +99,16 @@
 .project-visual { position: relative; display: grid; width: 104px; min-height: 142px; place-items: center; overflow: hidden; border: 1px solid #0f380f38; border-radius: 4px; }
 .project-visual > span { filter: drop-shadow(0 2px 2px #0005); font-size: 36px; }
 .project-visual > small { position: absolute; right: 4px; bottom: 3px; color: #0f380f; font: 5px var(--pixel-font); }
-.project-visual--compact {
-  width: 40px; min-height: 40px; height: 40px; flex: 0 0 40px;
-  padding: 2px; border: 3px solid #1b4932; border-radius: 0;
-  background: #eaf6d9; box-shadow: inset 0 0 0 1px #8eb779;
-  clip-path: polygon(4px 0, calc(100% - 4px) 0, calc(100% - 4px) 2px, calc(100% - 2px) 2px, calc(100% - 2px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 2px) calc(100% - 4px), calc(100% - 2px) calc(100% - 2px), calc(100% - 4px) calc(100% - 2px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 2px), 2px calc(100% - 2px), 2px calc(100% - 4px), 0 calc(100% - 4px), 0 4px, 2px 4px, 2px 2px, 4px 2px);
-}
-.project-visual--compact::before {
-  position: absolute; inset: 0; z-index: 2; pointer-events: none; content: '';
-  background: linear-gradient(#6a9662 0 0) 5px 5px / 3px 3px no-repeat, linear-gradient(#6a9662 0 0) calc(100% - 8px) 5px / 3px 3px no-repeat, linear-gradient(#6a9662 0 0) 5px calc(100% - 8px) / 3px 3px no-repeat, linear-gradient(#6a9662 0 0) calc(100% - 8px) calc(100% - 8px) / 3px 3px no-repeat;
-}
-.project-visual--compact > span { z-index: 1; font-size: 19px; }
-.project-visual--compact > small { z-index: 3; right: 3px; bottom: 2px; font: 4px var(--pixel-font); }
+.project-visual--compact { width: 40px; min-height: 40px; height: 40px; flex: 0 0 40px; padding: 0; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; clip-path: none; }
+.project-visual--compact > img { image-rendering: pixelated; object-fit: contain; }
+.project-visual--compact > span { font-size: 19px; }
+.project-visual--compact > small { right: 2px; bottom: 1px; font: 4px var(--pixel-font); }
 .project-visual--violet { background: radial-gradient(circle at 50% 30%, #c1a1eb, #705b99 72%); }
 .project-visual--orange { background: radial-gradient(circle at 50% 30%, #ffe08a, #c37837 72%); }
 .project-visual--cyan { background: radial-gradient(circle at 50% 30%, #9be8e2, #438893 72%); }
 .project-visual--green { background: radial-gradient(circle at 50% 30%, #d7e99b, #619259 72%); }
 .project-visual--yellow { background: radial-gradient(circle at 50% 30%, #ffea83, #d29f37 72%); }
 .project-visual--pink { background: radial-gradient(circle at 50% 30%, #ffb0e0, #a555a4 72%); }
-.project-visual--compact.project-visual--violet, .project-visual--compact.project-visual--orange, .project-visual--compact.project-visual--cyan, .project-visual--compact.project-visual--green, .project-visual--compact.project-visual--yellow, .project-visual--compact.project-visual--pink { background: #eaf6d9; }
 .project-detail-body { min-width: 0; }
 .project-card-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 5px; }
 .project-card-title-row .card-kicker { margin-bottom: 4px; font-size: 5px; }

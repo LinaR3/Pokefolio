@@ -7,16 +7,18 @@ const statusClass = {
 }
 
 export function ProjectPreview({ project, index = 0, compact = false }) {
-  const content = project.video
-    ? <video src={project.video} poster={project.image} controls preload="none" aria-label={`Video de ${project.name}`} />
-    : project.image
-      ? <img src={project.image} alt={project.visualLabel} loading="lazy" />
-      : <span>{project.visual}</span>
+  const content = compact && project.thumbnail
+    ? <img src={project.thumbnail} alt={project.thumbnailLabel ?? project.visualLabel} loading="lazy" />
+    : project.video
+      ? <video src={project.video} poster={project.image} controls preload="none" aria-label={`Video de ${project.name}`} />
+      : project.image
+        ? <img src={project.image} alt={project.visualLabel} loading="lazy" />
+        : <span>{project.visual}</span>
 
   return (
-    <div className={`project-visual project-visual--${project.theme}${compact ? ' project-visual--compact' : ''}`} role={project.image || project.video ? undefined : 'img'} aria-label={project.image || project.video ? undefined : project.visualLabel}>
+    <div className={`project-visual project-visual--${project.theme}${compact ? ' project-visual--compact' : ''}`} role={project.image || project.video || (compact && project.thumbnail) ? undefined : 'img'} aria-label={project.image || project.video || (compact && project.thumbnail) ? undefined : project.visualLabel}>
       {content}
-      {!project.image && !project.video && <small>{compact ? String(index + 1).padStart(2, '0') : 'PREVIEW'}</small>}
+      {!project.image && !project.video && !(compact && project.thumbnail) && <small>{compact ? String(index + 1).padStart(2, '0') : 'PREVIEW'}</small>}
     </div>
   )
 }

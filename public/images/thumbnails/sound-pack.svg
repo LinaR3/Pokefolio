@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" shape-rendering="crispEdges">
+  <path fill="#173f2e" d="M8 2h64v2h4v4h2v64h-2v4h-4v2H8v-2H4v-4H2V8h2V4h4z"/>
+  <path fill="#eef7dd" d="M10 6h60v2h4v4h2v56h-2v4h-4v2H10v-2H6v-4H4V12h2V8h4z"/>
+  <g fill="#78a66d">
+    <path d="M11 11h6v6h-6zM63 11h6v6h-6zM11 63h6v6h-6zM63 63h6v6h-6z"/>
+  </g>
+  <g fill="#a8c795">
+    <path d="M21 18h2v6h-2zM19 20h6v2h-6z"/>
+  </g>
+  <!-- Audífonos y ondas -->
+  <g stroke="#173f2e" stroke-width="2" stroke-linejoin="miter" fill="none">
+    <path d="M24 43v-7c0-12 7-19 16-19s16 7 16 19v7" stroke="#253d3a" stroke-width="6"/>
+    <path d="M24 40h8v17h-6v-3h-4V43z" fill="#ee6c68"/>
+    <path d="M48 40h8v3h2v11h-4v3h-6z" fill="#ee6c68"/>
+    <path d="M37 34h2v12h-2zM42 30h2v20h-2z" stroke="#5c9e72" stroke-width="3"/>
+  </g>
+  <path fill="#78a66d" d="M24 63h32v2H24z"/>
+</svg>

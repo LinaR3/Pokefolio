@@ -2,6 +2,8 @@
 export const gameProjects = [
   {
     name: 'HunterFoodWeb',
+    thumbnail: '/images/thumbnails/hunterfoodweb.svg',
+    thumbnailLabel: 'Pollo pixel art enmarcado para HunterFoodWeb',
     status: 'READY',
     description: 'Juego de acción en el que ayudas a una granjera a alimentar a sus animales y esquivas a los zorros.',
     role: 'Programación de videojuegos · Unity',
@@ -15,6 +17,8 @@ export const gameProjects = [
   },
   {
     name: 'Trick-or-loop',
+    thumbnail: '/images/thumbnails/trick-or-loop.svg',
+    thumbnailLabel: 'Calabaza pixel art enmarcada para Trick-or-loop',
     status: 'READY',
     description: 'Escapa de una pesadilla de Halloween antes de que el Boogeyman reclame tus dulces.',
     role: 'Game Programmer',
@@ -28,6 +32,8 @@ export const gameProjects = [
   },
   {
     name: 'Orbiteros SAS',
+    thumbnail: '/images/thumbnails/orbiteros.svg',
+    thumbnailLabel: 'Nave espacial pixel art enmarcada para Orbiteros SAS',
     status: 'READY',
     description: 'Videojuego disponible para jugar en itch.io.',
     role: 'Game Programmer',
@@ -44,6 +50,8 @@ export const gameProjects = [
 export const audioProjects = [
   {
     name: 'Paquete de sonidos',
+    thumbnail: '/images/thumbnails/sound-pack.svg',
+    thumbnailLabel: 'Audífonos pixel art enmarcados para el paquete de sonidos',
     status: 'IN PROGRESS',
     description: 'Preview gratuita. Próximamente.',
     visual: '♫',
@@ -52,6 +60,8 @@ export const audioProjects = [
   },
   {
     name: 'Lina Reina',
+    thumbnail: '/images/thumbnails/lina-reina-music.svg',
+    thumbnailLabel: 'Micrófono y notas musicales pixel art para Lina Reina',
     status: 'READY',
     description: 'Perfil musical de Lina Reina en Spotify.',
     hideDescription: true,
@@ -67,6 +77,8 @@ export const audioProjects = [
   },
   {
     name: 'GALAXIAS · Salomé',
+    thumbnail: '/images/thumbnails/galaxias.svg',
+    thumbnailLabel: 'Planeta pixel art enmarcado para GALAXIAS',
     status: 'READY',
     description: 'Producción musical para el proyecto GALAXIAS de Salomé.',
     hideDescription: true,

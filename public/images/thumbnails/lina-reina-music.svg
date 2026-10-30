@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" shape-rendering="crispEdges">
+  <path fill="#173f2e" d="M8 2h64v2h4v4h2v64h-2v4h-4v2H8v-2H4v-4H2V8h2V4h4z"/>
+  <path fill="#eef7dd" d="M10 6h60v2h4v4h2v56h-2v4h-4v2H10v-2H6v-4H4V12h2V8h4z"/>
+  <g fill="#78a66d">
+    <path d="M11 11h6v6h-6zM63 11h6v6h-6zM11 63h6v6h-6zM63 63h6v6h-6z"/>
+  </g>
+  <g fill="#a8c795">
+    <path d="M21 18h2v6h-2zM19 20h6v2h-6z"/>
+  </g>
+  <!-- Micrófono y notas -->
+  <g stroke="#173f2e" stroke-width="2" stroke-linejoin="miter">
+    <path fill="#e56d78" d="M36 29h8v4h4v15h-4v4h-8v-4h-4V33h4z"/>
+    <path fill="#f5cf72" d="M37 32h6v11h-6z"/>
+    <path fill="none" d="M30 42v5c0 8 4 12 10 12s10-4 10-12v-5M40 59v5M34 64h12" stroke="#173f2e" stroke-width="3"/>
+    <path fill="#4b94a1" d="M22 27h3v12h-3zM25 24h6v5h-6zM51 22h3v12h-3zM54 19h6v5h-6z"/>
+  </g>
+  <path fill="#78a66d" d="M24 68h32v2H24z"/>
+</svg>
