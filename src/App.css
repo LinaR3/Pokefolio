@@ -165,8 +165,8 @@
 .category-button.is-active { border-color: #60a5faaa; background: #3b82f63d; color: #bfdbfe; box-shadow: inset 0 0 15px #3b82f620; }
 .control-row { display: grid; height: 218px; min-height: 218px; box-sizing: border-box; grid-template-columns: 150px 1fr; align-items: center; gap: 18px; padding: 13px 4px 5px; }
 .dpad { position: relative; display: grid; width: 108px; height: 108px; grid-template: repeat(3, 1fr) / repeat(3, 1fr); place-items: center; justify-self: center; }
-.dpad-button { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #070b10; border-radius: 11px; background: linear-gradient(145deg, #303842 0%, #141a21 52%, #272e36 100%); color: #ffffffbd; font-size: 12px; cursor: pointer; box-shadow: inset 1px 1px 2px #ffffff20, inset -2px -2px 4px #0008, 0 3px 5px #0008; }
-.dpad-button:hover { color: #fff; background: linear-gradient(145deg, #414b56, #202830); }
+.dpad-button { z-index: 1; display: grid; width: 35px; height: 35px; place-items: center; border: 1px solid #070f27; border-radius: 5px; background: linear-gradient(145deg, #234588, #0a1738); color: #ffffffbd; font-size: 12px; cursor: pointer; box-shadow: inset 0 1px #ffffff20, 0 3px 5px #0008; }
+.dpad-button:hover { color: #fff; background: #2563eb; }
 .project-visual img, .project-visual video { display: block; width: 100%; height: 100%; min-height: 74px; object-fit: cover; }
 .dpad-up { grid-area: 1 / 2; }.dpad-left { grid-area: 2 / 1; }.dpad-center { grid-area: 2 / 2; width: 35px; height: 35px; background: #08132d; border: 2px solid #070f27; }.dpad-right { grid-area: 2 / 3; }.dpad-down { grid-area: 3 / 2; }
 .mini-card { display: flex; min-width: 0; min-height: 76px; align-items: center; gap: 12px; padding: 11px; border: 1px solid #3b82f655; border-radius: 11px; background: #050a16b8; }
