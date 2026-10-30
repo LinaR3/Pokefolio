@@ -272,7 +272,7 @@ export default function PokedexShell() {
                     <h1>{activeSection.title}</h1>
                     <div className="type-badges">{activeSection.types.map((type) => <span key={type}>{type}</span>)}</div>
                   </header>
-                  <SectionContent section={activeSection.id} selectedItem={selectedItems[activeSection.id] ?? 0} />
+                  <SectionContent section={activeSection.id} selectedItem={selectedItems[activeSection.id]} />
                   <footer className="screen-footer"><span>● SISTEMA LISTO</span><span>{String(activeIndex + 1).padStart(2, '0')} / 03</span></footer>
                 </div>
               )}
