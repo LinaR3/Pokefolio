@@ -209,7 +209,7 @@ export default function PokedexShell() {
       <section className="gameboy" aria-label="Pokefolio de Lina Reina">
         <header className="gameboy-topline">
           <span className="topline-rule" />
-          <div className="topline-brand"><Pokeball /><span>POKEFOLIO <b>•</b> LINA REINA</span><Pokeball /></div>
+          <div className="topline-brand"><Pokeball /><span>POKEFOLIO</span><Pokeball /></div>
           <span className="topline-rule" />
         </header>
 
