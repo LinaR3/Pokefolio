@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { ProjectPreview } from './ProjectCard.jsx'
 import { PokeballMark } from './PokeballMark.jsx'
 
-export default function ProjectOverlay({ project, origin, onClose }) {
+export default function ProjectOverlay({ project, origin, closing = false, onClose }) {
   const [expanded, setExpanded] = useState(false)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function ProjectOverlay({ project, origin, onClose }) {
   if (!project || !origin) return null
 
   return createPortal(
-    <div className={`project-overlay${expanded ? ' is-expanded' : ''}`}>
+    <div className={`project-overlay${expanded && !closing ? ' is-expanded' : ''}`}>
       <button className="project-overlay__backdrop" onClick={onClose} aria-label="Cerrar ficha ampliada" />
       <section
         className="project-overlay__screen"

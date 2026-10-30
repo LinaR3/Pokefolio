@@ -121,6 +121,7 @@ export default function PokedexShell() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [selectedItems, setSelectedItems] = useState({ projects: 0, audio: 0 })
   const [overlayProject, setOverlayProject] = useState(null)
+  const [overlayClosing, setOverlayClosing] = useState(false)
   const [overlayOrigin, setOverlayOrigin] = useState(null)
   const displayFrameRef = useRef(null)
   const activeSection = sections[activeIndex]
@@ -147,11 +148,17 @@ export default function PokedexShell() {
     const frame = displayFrameRef.current?.getBoundingClientRect()
     if (!frame) return
     setOverlayOrigin({ left: frame.left, top: frame.top, width: frame.width, height: frame.height })
+    setOverlayClosing(false)
     setOverlayProject(project)
   }
 
   function closeProject() {
-    setOverlayProject(null)
+    if (!overlayProject || overlayClosing) return
+    setOverlayClosing(true)
+    window.setTimeout(() => {
+      setOverlayProject(null)
+      setOverlayClosing(false)
+    }, 650)
   }
 
   function handleAButton() {
@@ -174,6 +181,7 @@ export default function PokedexShell() {
       if (event.altKey || event.ctrlKey || event.metaKey) return
       if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return
       if (event.key === 'Escape') { if (overlayProject) closeProject(); else resetToWelcome(); return }
+      if (overlayProject) return
       if (!started) {
         if (event.key === 'Enter' || event.key.toLowerCase() === 'a') setStarted(true)
         return
@@ -269,7 +277,7 @@ export default function PokedexShell() {
           <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO CON CURIOSIDAD <b>♥</b></span></footer>
         </div>
       </section>
-      <ProjectOverlay project={overlayProject} origin={overlayOrigin} onClose={closeProject} />
+      <ProjectOverlay project={overlayProject} origin={overlayOrigin} closing={overlayClosing} onClose={closeProject} />
     </main>
   )
 }
