@@ -112,11 +112,10 @@
 .project-card-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 5px; }
 .project-card-title-row .card-kicker { margin-bottom: 4px; font-size: 5px; }
 .project-card-title-row h2 { margin: 0; overflow-wrap: anywhere; font-size: 8px; }
-.project-status { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 4px; padding: 4px 5px; border-radius: 3px; color: white; font: 5px var(--pixel-font); white-space: nowrap; }
-.project-status i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.project-status--ready { background: #197641; }
-.project-status--progress { background: #a56708; }
-.project-status--suspended { background: #a92e31; }
+.project-status-dot { display: block; width: 11px; height: 11px; flex: 0 0 11px; border: 1px solid #f8fafc; border-radius: 50%; box-shadow: 0 0 0 2px #0b1736, 0 0 8px currentColor; cursor: help; }
+.project-status--ready { color: #4ade80; background: #22c55e; }
+.project-status--progress { color: #facc15; background: #eab308; }
+.project-status--suspended { color: #f87171; background: #ef4444; }
 .project-description { margin-top: 6px !important; font-size: 10px; line-height: 1.35; }
 .project-details { display: grid; grid-template-columns: 1fr; gap: 3px; margin: 6px 0; }
 .project-details div { display: flex; align-items: baseline; gap: 5px; }
@@ -134,13 +133,13 @@
 .project-selection-heading { display: flex; justify-content: space-between; gap: 6px; margin-bottom: 6px; color: #93c5fd; font: 6px var(--pixel-font); }
 .project-selection-heading small { color: #ffffff80; font: inherit; white-space: nowrap; }
 .project-selector-list { display: flex; min-height: 0; flex: 1; flex-direction: column; gap: 6px; overflow-y: auto; padding: 2px 5px 2px 2px; scrollbar-color: #60a5fa #0b1736; scrollbar-width: thin; }
-.project-summary { display: flex; width: 100%; min-width: 0; flex: 0 0 auto; align-items: center; gap: 7px; padding: 6px; border: 1px solid #60a5fa40; border-radius: 6px; background: #050a1680; color: #fff; text-align: left; cursor: pointer; transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease; }
+.project-summary { position: relative; display: flex; width: 100%; min-width: 0; flex: 0 0 auto; align-items: center; gap: 7px; padding: 6px 26px 6px 6px; border: 1px solid #60a5fa40; border-radius: 6px; background: #050a1680; color: #fff; text-align: left; cursor: pointer; transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease; }
 .project-summary:hover { transform: translateY(-1px); border-color: #93c5fd; background: #2563eb33; }
 .project-summary--selected { border-color: #f5c84c; background: #2563eb45; box-shadow: 0 0 0 1px #f5c84c44, 0 0 10px #f5c84c22; }
 .project-summary-copy { display: flex; min-width: 0; flex-direction: column; gap: 5px; }
 .project-summary-copy strong { overflow: hidden; color: #eaf2ff; font: 6px var(--pixel-font); line-height: 1.6; text-overflow: ellipsis; }
-.project-summary-status { display: inline-flex; width: fit-content; align-items: center; gap: 4px; padding: 3px 4px; border-radius: 3px; color: white; font: 4px var(--pixel-font); }
-.project-summary-status i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.project-summary .project-status-dot { position: absolute; top: 9px; right: 9px; }
+.project-detail .project-status-dot { margin: 2px 2px 0 auto; }
 .project-selection .project-visual img, .project-selection .project-visual video { min-height: 40px; height: 40px; }
 .project-selection .project-visual video { object-fit: cover; }
 .trainer-card { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
@@ -328,7 +327,6 @@
   .project-visual > span { font-size: 28px; }
   .project-detail > .project-visual img, .project-detail > .project-visual video { min-height: 112px; }
   .project-card-title-row { flex-wrap: wrap; }
-  .project-status { font-size: 4px; padding: 3px 4px; }
   .project-card-title-row h2 { font-size: 7px; }
   .project-description { font-size: 9px; }
   .project-details dd { font-size: 8px; }
@@ -349,7 +347,6 @@
   .project-summary { flex: 0 0 auto; }
   .project-selection-heading { font-size: 5px; }
   .project-summary-copy strong { font-size: 5px; }
-  .project-summary-status { font-size: 3px; }
   .mini-card { min-height: 66px; gap: 7px; padding: 8px; }
   .mini-card-icon { width: 34px; height: 34px; flex-basis: 34px; font-size: 18px; }
   .mini-card-kicker { font-size: 5px; }

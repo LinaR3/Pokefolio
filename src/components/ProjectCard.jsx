@@ -3,6 +3,11 @@ const statusClass = {
   'IN PROGRESS': 'progress',
   SUSPENDIDO: 'suspended',
 }
+const statusLabel = {
+  READY: 'Disponible',
+  'IN PROGRESS': 'En progreso',
+  SUSPENDIDO: 'Pausa',
+}
 
 export function ProjectPreview({ project, index = 0, compact = false }) {
   const content = compact && project.thumbnail
@@ -23,23 +28,26 @@ export function ProjectPreview({ project, index = 0, compact = false }) {
 
 export function ProjectSummaryCard({ project, index, selected, onSelect }) {
   const statusTone = statusClass[project.status] ?? 'progress'
+  const label = statusLabel[project.status] ?? project.status
   return (
-    <button type="button" className={`project-summary${selected ? ' project-summary--selected' : ''}`} onClick={onSelect} aria-pressed={selected} aria-label={`Ver ${project.name}, ${project.status}`}>
+    <button type="button" className={`project-summary${selected ? ' project-summary--selected' : ''}`} onClick={onSelect} aria-pressed={selected} aria-label={`Ver ${project.name}, ${label}`}>
       <ProjectPreview project={project} index={index} compact />
-      <span className="project-summary-copy"><strong>{String(index + 1).padStart(2, '0')} · {project.name}</strong><small className={`project-summary-status project-status--${statusTone}`}><i />{project.status}</small></span>
+      <span className="project-summary-copy"><strong>{project.name}</strong></span>
+      <span className={`project-status-dot project-status--${statusTone}`} title={label} aria-hidden="true" />
     </button>
   )
 }
 
 export default function ProjectCard({ project, index, category = 'Proyecto' }) {
   const statusTone = statusClass[project.status] ?? 'progress'
+  const label = statusLabel[project.status] ?? project.status
   return (
     <article className={`lcd-card project-detail${project.wide ? ' project-detail--wide' : ''}`}>
       {!project.wide && <ProjectPreview project={project} index={index} />}
       <div className="project-detail-body">
         <div className="project-card-title-row">
           <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>
-          <span className={`project-status project-status--${statusTone}`}><i />{project.status}</span>
+          <span className={`project-status-dot project-status--${statusTone}`} title={label} role="img" aria-label={`Estado del proyecto: ${label}`} />
         </div>
         {project.description && !project.hideDescription && <p className="project-description">{project.description}</p>}
         <dl className="project-details">
