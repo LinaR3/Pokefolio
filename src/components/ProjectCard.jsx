@@ -1,3 +1,5 @@
+import SpotifyEmbed from './SpotifyEmbed.jsx'
+
 const statusClass = {
   READY: 'ready',
   'IN PROGRESS': 'progress',
@@ -29,14 +31,14 @@ export function ProjectSummaryCard({ project, index, selected, onSelect }) {
   )
 }
 
-export default function ProjectCard({ project, index, category = 'Proyecto' }) {
+export default function ProjectCard({ project, index, category = 'Proyecto', isPlaying = false, onPlaybackChange = () => {} }) {
   const statusTone = statusClass[project.status] ?? 'progress'
   return (
     <article className={`lcd-card project-detail${project.wide ? ' project-detail--wide' : ''}`}>
       {!project.wide && <ProjectPreview project={project} index={index} />}
       <div className="project-detail-body">
         <div className="project-card-title-row">
-          <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>
+          <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')} {category === 'AUDIO' && project.embedUrl && <span className={`audio-equalizer${isPlaying ? ' is-playing' : ''}`} role="img" aria-label={isPlaying ? 'Reproduciendo' : 'En pausa'}><i /><i /><i /></span>}</p><h2>{project.name}</h2></div>
           <span className={`project-status project-status--${statusTone}`}><i />{project.status}</span>
         </div>
         {project.description && !project.hideDescription && <p className="project-description">{project.description}</p>}
@@ -46,7 +48,7 @@ export default function ProjectCard({ project, index, category = 'Proyecto' }) {
           {project.contributions && <div><dt>APORTES</dt><dd>{project.contributions}</dd></div>}
           {project.engine && <div><dt>ENGINE</dt><dd>{project.engine}</dd></div>}
         </dl>
-        {project.embedUrl && <iframe className="spotify-embed" src={project.embedUrl} title={`Reproductor de Spotify: ${project.name}`} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" allowFullScreen style={project.embedHeight ? { height: `${project.embedHeight}px` } : undefined} />}
+        {project.embedUrl && <SpotifyEmbed project={project} onPlaybackChange={onPlaybackChange} />}
         {project.embedUrl && project.playUrl
           ? <a className="spotify-link" href={project.playUrl} target="_blank" rel="noreferrer">ABRIR EN SPOTIFY ↗</a>
           : project.playUrl

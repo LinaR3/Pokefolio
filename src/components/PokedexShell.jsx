@@ -41,10 +41,11 @@ function WelcomeScreen({ onStart }) {
 }
 
 function ProjectDetail({ projects, selectedItem, category }) {
+  const [isPlaying, setIsPlaying] = useState(false)
   const project = projects[selectedItem]
   return (
     <div className="screen-content project-detail-screen">
-      <ProjectCard project={project} index={selectedItem} category={category} />
+      <ProjectCard project={project} index={selectedItem} category={category} isPlaying={isPlaying} onPlaybackChange={setIsPlaying} />
       <p className="detail-hint">Usa el selector inferior o ▲ / ▼ para cambiar de ficha.</p>
     </div>
   )
@@ -137,7 +138,7 @@ function ProjectSelectionPrompt() {
 
 function SectionContent({ section, selectedItem }) {
   if (section === 'projects') return <ProjectSelectionPrompt />
-  if (section === 'audio') return audioProjects.length ? <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" /> : <AudioEmptyContent />
+  if (section === 'audio') return audioProjects.length ? <ProjectDetail key={selectedItem} projects={audioProjects} selectedItem={selectedItem} category="AUDIO" /> : <AudioEmptyContent />
   return <ContactContent />
 }
 
