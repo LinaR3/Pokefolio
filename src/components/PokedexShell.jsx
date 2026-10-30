@@ -93,7 +93,6 @@ function ContactContent() {
     <div className="screen-content">
       <article className="lcd-card contact-card">
         <div className="trainer-card">
-          <div className="trainer-avatar trainer-hug-sprite" role="img" aria-label="Lina abrazando a Umbreon, animación pixel art" />
           <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Python · Music Producer</p></div>
         </div>
         <div className="contact-link-list" aria-label="Perfiles profesionales">
@@ -277,7 +276,7 @@ export default function PokedexShell() {
                     <div className="type-badges">{activeSection.types.map((type) => <span key={type}>{type}</span>)}</div>
                   </header>
                   <SectionContent section={activeSection.id} selectedItem={selectedItems[activeSection.id]} />
-                  <footer className={`screen-footer${activeSection.id === 'projects' ? ' screen-footer--projects' : ''}`}><span>● SISTEMA LISTO</span><div className="screen-footer-runway" aria-hidden="true"><span key={activeSection.id} className="screen-footer-runner" /></div><span>{String(activeIndex + 1).padStart(2, '0')} / 03</span></footer>
+                  <footer className={`screen-footer${activeSection.id === 'projects' ? ' screen-footer--projects' : ''}`}><span>● SISTEMA LISTO</span>{activeSection.id !== 'contact' && <div className="screen-footer-runway" aria-hidden="true"><span key={activeSection.id} className="screen-footer-runner" /></div>}<span>{String(activeIndex + 1).padStart(2, '0')} / 03</span></footer>
                 </div>
               )}
             </Screen>

@@ -154,19 +154,6 @@
 .project-selection .project-visual img, .project-selection .project-visual video { min-height: 40px; height: 40px; }
 .project-selection .project-visual video { object-fit: cover; }
 .trainer-card { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.trainer-avatar { display: block; width: 104px; height: 104px; flex: 0 0 104px; border: 2px solid #0f380f70; border-radius: 8px; object-fit: cover; object-position: center; image-rendering: auto; }
-.trainer-hug-sprite { position: relative; overflow: hidden; border-color: #173716; background: #07140a; box-shadow: inset 0 0 0 2px #0a1b0e, 0 0 0 1px #a5c51566; }
-.trainer-hug-sprite::before { position: absolute; inset: 0; background-image: url("/images/sprite-sheets/lina-umbreon-hug-new.png"); background-repeat: no-repeat; background-size: 500% auto; background-position: 50% 47.62%; content: ""; image-rendering: pixelated; animation: trainer-hug-loop 2s steps(1, end) infinite; }
-@keyframes trainer-hug-loop {
-  0% { background-position: 50% 47.62%; }
-  12.5% { background-position: 75% 47.62%; }
-  25% { background-position: 100% 47.62%; }
-  37.5% { background-position: 0% 95.24%; }
-  50% { background-position: 25% 95.24%; }
-  62.5% { background-position: 50% 95.24%; }
-  75% { background-position: 75% 95.24%; }
-  87.5%, 100% { background-position: 100% 95.24%; }
-}
 .trainer-copy { min-width: 0; }
 .trainer-copy .card-kicker { margin-bottom: 6px; }
 .trainer-copy h2 { margin: 0 0 5px; font: 10px/1.5 var(--pixel-font); }
@@ -378,7 +365,6 @@
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .trainer-hug-sprite::before { animation: none; background-position: 50% 95.24%; }
   .screen-footer-runner { animation: none; background-position: 33.333% 0; left: 0; transform: scaleX(-1); }
   .screen-footer--projects .screen-footer-runner { left: 50%; transform: translateX(-50%); opacity: 1; background-position: 60% 100%; }
 }
