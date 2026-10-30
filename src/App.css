@@ -113,6 +113,8 @@
 .project-details dd, .contact-list dd { min-width: 0; margin: 0; font-size: 9px; line-height: 1.25; }
 .project-play { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: fit-content; padding: 5px 7px; border-radius: 3px; background: var(--lcd-dark); color: var(--lcd-light); font: 6px var(--pixel-font); text-decoration: none; }
 .project-play:hover, .email-cta:hover { background: #164f1a; }
+.project-play--disabled { background: #0f380f88; color: #e5f2b0; cursor: default; }
+.spotify-embed { display: block; width: 100%; height: 152px; margin: 8px 0; border: 0; border-radius: 12px; }
 .project-play small { color: #b8d66a; font: 5px var(--pixel-font); }
 .detail-hint { margin: 0; text-align: center; font: 5px var(--pixel-font); opacity: .7; }
 .project-selection { min-width: 0; }

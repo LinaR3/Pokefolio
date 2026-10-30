@@ -174,7 +174,7 @@ export default function PokedexShell() {
       return
     }
     if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
-    if (activeSection.id === 'audio' && itemList.length) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
+    if (activeSection.id === 'audio' && itemList[selectedItems.audio]?.playUrl) window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
     if (activeSection.id === 'contact') window.location.href = `mailto:${contact.email}`
   }
 

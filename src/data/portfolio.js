@@ -38,8 +38,40 @@ export const gameProjects = [
   },
 ]
 
-// Muestras musicales publicadas en Spotify.
-export const audioProjects = []
+// Música publicada y próximos recursos de sonido de Lina.
+export const audioProjects = [
+  {
+    name: 'Lina Reina · Artista',
+    status: 'READY',
+    description: 'Perfil musical de Lina Reina en Spotify.',
+    role: 'Cantante · Productora musical',
+    playUrl: 'https://open.spotify.com/intl-es/artist/2G1e4GLy7AKkTHaBdLfGoO',
+    linkLabel: 'ESCUCHAR EN SPOTIFY',
+    visual: '♫',
+    visualLabel: 'Música de Lina Reina',
+    theme: 'violet',
+  },
+  {
+    name: 'Producción musical',
+    status: 'READY',
+    description: 'Escucha esta producción musical de Lina Reina.',
+    role: 'Productora musical',
+    playUrl: 'https://open.spotify.com/track/5hkc80og933veduXlZdwPw',
+    embedUrl: 'https://open.spotify.com/embed/track/5hkc80og933veduXlZdwPw?utm_source=generator&theme=0&si=276e6ba9b49a4d01',
+    linkLabel: 'ESCUCHAR EN SPOTIFY',
+    visual: '♫',
+    visualLabel: 'Producción musical de Lina Reina',
+    theme: 'pink',
+  },
+  {
+    name: 'Paquete de sonidos',
+    status: 'IN PROGRESS',
+    description: 'Preview gratuita. Próximamente.',
+    visual: '♫',
+    visualLabel: 'Paquete de sonidos',
+    theme: 'cyan',
+  },
+]
 
 export const contact = {
   email: 'linareinap3@gmail.com',
