@@ -96,7 +96,7 @@ function ContactContent() {
           <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} hint="VER PROYECTOS" />
           <ContactLink type="itchio" label="ITCH.IO" value="linar3.itch.io" href={contact.itchio} hint="JUGAR MIS PROYECTOS" />
         </div>
-        <a className="email-cta" href={`mailto:${contact.email}`}>✉ ESCRÍBEME POR CORREO</a>
+        <a className="email-cta" href={`mailto:${contact.email}`}>✉ ESCRÍBEME: {contact.email}</a>
       </article>
     </div>
   )
