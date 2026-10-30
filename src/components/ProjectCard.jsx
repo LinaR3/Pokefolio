@@ -39,17 +39,19 @@ export default function ProjectCard({ project, index, category = 'Proyecto' }) {
           <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>
           <span className={`project-status project-status--${statusTone}`}><i />{project.status}</span>
         </div>
-        <p className="project-description">{project.description}</p>
+        {project.description && !project.hideDescription && <p className="project-description">{project.description}</p>}
         <dl className="project-details">
           {project.role && <div><dt>ROL</dt><dd>{project.role}</dd></div>}
           {project.members && <div><dt>EQUIPO</dt><dd>{project.members}</dd></div>}
           {project.contributions && <div><dt>APORTES</dt><dd>{project.contributions}</dd></div>}
           {project.engine && <div><dt>ENGINE</dt><dd>{project.engine}</dd></div>}
         </dl>
-        {project.embedUrl && <iframe className="spotify-embed" src={project.embedUrl} title={`Reproductor de Spotify: ${project.name}`} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" allowFullScreen />}
-        {project.playUrl
-          ? <a className="project-play" href={project.playUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${project.name}`}><span>▶ PLAY</span><small>{project.linkLabel ?? 'ABRIR PROYECTO'}</small></a>
-          : <span className="project-play project-play--disabled">PREVIEW GRATIS · PRÓXIMAMENTE</span>}
+        {project.embedUrl && <iframe className="spotify-embed" src={project.embedUrl} title={`Reproductor de Spotify: ${project.name}`} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" allowFullScreen style={project.embedHeight ? { height: `${project.embedHeight}px` } : undefined} />}
+        {project.embedUrl && project.playUrl
+          ? <a className="spotify-link" href={project.playUrl} target="_blank" rel="noreferrer">ABRIR EN SPOTIFY ↗</a>
+          : project.playUrl
+            ? <a className="project-play" href={project.playUrl} target="_blank" rel="noreferrer" aria-label={`Abrir ${project.name}`}><span>▶ PLAY</span><small>{project.linkLabel ?? 'ABRIR PROYECTO'}</small></a>
+            : <span className="project-play project-play--disabled">PREVIEW GRATIS · PRÓXIMAMENTE</span>}
       </div>
     </article>
   )
