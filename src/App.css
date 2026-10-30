@@ -192,8 +192,8 @@
   .topline-brand .pokeball { width: 20px; height: 20px; }
   .gameboy-display-row { gap: 0; padding: 11px 10px 5px; }
   .side-panel { display: none; }
-  .display-frame { min-height: 390px; padding: 7px; }
-  .pokedex-screen { height: 470px; min-height: 470px; }
+  .display-frame { min-height: 0; padding: 7px; }
+  .pokedex-screen { height: clamp(230px, calc(100svh - 340px), 470px); min-height: 0; }
   .welcome-screen { height: 100%; min-height: 0; }
   .app-screen { height: 100%; min-height: 0; max-height: none; padding: 12px 10px 9px; }
   .welcome-screen { padding: 24px 10px 17px; }
