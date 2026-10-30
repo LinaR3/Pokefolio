@@ -32,8 +32,8 @@ export function ProjectSummaryCard({ project, index, selected, onSelect }) {
 export default function ProjectCard({ project, index, category = 'Proyecto' }) {
   const statusTone = statusClass[project.status] ?? 'progress'
   return (
-    <article className="lcd-card project-detail">
-      <ProjectPreview project={project} index={index} />
+    <article className={`lcd-card project-detail${project.wide ? ' project-detail--wide' : ''}`}>
+      {!project.wide && <ProjectPreview project={project} index={index} />}
       <div className="project-detail-body">
         <div className="project-card-title-row">
           <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>

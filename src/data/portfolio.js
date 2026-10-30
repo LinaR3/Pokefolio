@@ -41,7 +41,15 @@ export const gameProjects = [
 // Música publicada y próximos recursos de sonido de Lina.
 export const audioProjects = [
   {
-    name: 'Lina Reina · Artista',
+    name: 'Paquete de sonidos',
+    status: 'IN PROGRESS',
+    description: 'Preview gratuita. Próximamente.',
+    visual: '♫',
+    visualLabel: 'Paquete de sonidos',
+    theme: 'cyan',
+  },
+  {
+    name: 'Lina Reina',
     status: 'READY',
     description: 'Perfil musical de Lina Reina en Spotify.',
     role: 'Cantante · Productora musical',
@@ -52,24 +60,17 @@ export const audioProjects = [
     theme: 'violet',
   },
   {
-    name: 'Producción musical',
+    name: 'GALAXIAS · Salomé',
     status: 'READY',
-    description: 'Escucha esta producción musical de Lina Reina.',
+    description: 'Producción musical para el proyecto GALAXIAS de Salomé.',
     role: 'Productora musical',
     playUrl: 'https://open.spotify.com/track/5hkc80og933veduXlZdwPw',
     embedUrl: 'https://open.spotify.com/embed/track/5hkc80og933veduXlZdwPw?utm_source=generator&theme=0&si=276e6ba9b49a4d01',
     linkLabel: 'ESCUCHAR EN SPOTIFY',
     visual: '♫',
-    visualLabel: 'Producción musical de Lina Reina',
+    visualLabel: 'Producción musical de GALAXIAS',
     theme: 'pink',
-  },
-  {
-    name: 'Paquete de sonidos',
-    status: 'IN PROGRESS',
-    description: 'Preview gratuita. Próximamente.',
-    visual: '♫',
-    visualLabel: 'Paquete de sonidos',
-    theme: 'cyan',
+    wide: true,
   },
 ]
 

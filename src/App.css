@@ -85,6 +85,7 @@
 .coming-soon { margin-left: auto; font: 5px var(--pixel-font); white-space: nowrap; }
 .project-detail-screen { justify-content: center; gap: 8px; }
 .project-detail { display: grid; grid-template-columns: 104px minmax(0, 1fr); align-items: stretch; gap: 12px; padding: 10px; border: 1px solid #0f380f42; background: #0f380f0c; }
+.project-detail--wide { grid-template-columns: minmax(0, 1fr); }
 .project-visual { position: relative; display: grid; width: 104px; min-height: 142px; place-items: center; overflow: hidden; border: 1px solid #0f380f38; border-radius: 4px; }
 .project-visual > span { filter: drop-shadow(0 2px 2px #0005); font-size: 36px; }
 .project-visual > small { position: absolute; right: 4px; bottom: 3px; color: #0f380f; font: 5px var(--pixel-font); }
