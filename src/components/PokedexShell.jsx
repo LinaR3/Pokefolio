@@ -92,7 +92,7 @@ function ContactContent() {
           <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Sound Designer · Unity</p></div>
         </div>
         <div className="contact-link-list" aria-label="Perfiles profesionales">
-          <ContactLink type="linkedin" label="LINKEDIN" value="Perfil profesional" href={contact.linkedin} hint="VISITAR PERFIL" />
+          <ContactLink type="linkedin" label="LINKEDIN" value="LinkedIn de Lina" href={contact.linkedin} hint="VISITAR PERFIL" />
           <ContactLink type="github" label="GITHUB" value="github.com/LinaR3" href={contact.github} hint="VER PROYECTOS" />
           <ContactLink type="itchio" label="ITCH.IO" value="linar3.itch.io" href={contact.itchio} hint="JUGAR MIS PROYECTOS" />
         </div>
