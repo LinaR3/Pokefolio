@@ -19,17 +19,17 @@ function WelcomeScreen({ onStart }) {
   return (
     <div className="welcome-screen">
       <div className="welcome-copy">
-        <p className="eyebrow">GAMEBOY PORTFOLIO EDITION</p>
+        <p className="eyebrow">POKEFOLIO EDITION</p>
         <h1>Lina Reina</h1>
-        <p className="welcome-tag">DESARROLLO · CREATIVIDAD · AUDIO</p>
+        <p className="welcome-tag">Game Developer | C# | Python | Music Producer</p>
       </div>
       <button className="welcome-ball-button" onClick={onStart} aria-label="Abrir Pokefolio">
         <Pokeball className="pokeball--large" />
-        <span className="trainer-id">ENTRENADORA ID: #2026</span>
+        <span className="trainer-id">ENTRENADORA ID: #0903</span>
       </button>
       <div className="welcome-action">
         <button className="pixel-button" onClick={onStart}>INICIAR AVENTURA <span>►</span></button>
-        <p>Usa los controles o selecciona una sección</p>
+        <p>Usa los controles o da click para comenzar.</p>
       </div>
     </div>
   )
@@ -89,7 +89,7 @@ function ContactContent() {
       <article className="lcd-card contact-card">
         <div className="trainer-card">
           <div className="trainer-avatar" role="img" aria-label="Retrato de Lina Reina">LR</div>
-          <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Sound Designer · Unity</p></div>
+          <div className="trainer-copy"><p className="card-kicker">PERFIL DE ENTRENADORA</p><h2>Lina Reina</h2><p>Game Developer · C# · Python · Music Producer</p></div>
         </div>
         <div className="contact-link-list" aria-label="Perfiles profesionales">
           <ContactLink type="linkedin" label="LINKEDIN" value="LinkedIn de Lina" href={contact.linkedin} hint="VISITAR PERFIL" />
@@ -100,6 +100,13 @@ function ContactContent() {
       </article>
     </div>
   )
+}
+
+function TrainerStatusCard({ started, activeSection, activeIndex }) {
+  const content = <><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><span className="mini-card-copy"><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></span><span className="mini-card-status">ONLINE</span></>
+
+  if (!started) return <a className="mini-card mini-card-link" href={contact.linkedin} target="_blank" rel="noreferrer" aria-label="Visitar LinkedIn de Lina Reina">{content}</a>
+  return <div className="mini-card">{content}</div>
 }
 
 function AudioEmptyContent() {
@@ -269,11 +276,11 @@ export default function PokedexShell() {
             {started && (activeSection.id === 'projects' || (activeSection.id === 'audio' && itemList.length > 0)) ? (
               <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => { setSelectedItems((current) => ({ ...current, [activeSection.id]: index })); if (activeSection.id === 'projects') openProject(gameProjects[index]) }} />
             ) : (
-              <div className="mini-card"><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><div><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></div><span className="mini-card-status">ONLINE</span></div>
+              <TrainerStatusCard started={started} activeSection={activeSection} activeIndex={activeIndex} />
             )}
           </div>
 
-          <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO CON CURIOSIDAD <b>♥</b></span></footer>
+          <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO EN EL LLANO</span></footer>
         </div>
       </section>
       <ProjectOverlay project={overlayProject} origin={overlayOrigin} closing={overlayClosing} onClose={closeProject} />

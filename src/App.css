@@ -168,8 +168,11 @@
 .project-visual img, .project-visual video { display: block; width: 100%; height: 100%; min-height: 74px; object-fit: cover; }
 .dpad-up { grid-area: 1 / 2; }.dpad-left { grid-area: 2 / 1; }.dpad-center { grid-area: 2 / 2; width: 35px; height: 35px; background: #08132d; border: 2px solid #070f27; }.dpad-right { grid-area: 2 / 3; }.dpad-down { grid-area: 3 / 2; }
 .mini-card { display: flex; min-width: 0; min-height: 76px; align-items: center; gap: 12px; padding: 11px; border: 1px solid #3b82f655; border-radius: 11px; background: #050a16b8; }
+.mini-card-link { color: inherit; text-decoration: none; transition: border-color .16s ease, background .16s ease; }
+.mini-card-link:hover, .mini-card-link:focus-visible { border-color: #93c5fd; background: #162d6b; }
+.mini-card-link:focus-visible { outline: 2px solid #f5c84c; outline-offset: 2px; }
 .mini-card-icon { display: grid; width: 43px; height: 43px; flex: 0 0 43px; place-items: center; border: 1px solid #60a5fa55; border-radius: 8px; background: #162d6b; color: #f5c84c; font-size: 22px; }
-.mini-card div { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
+.mini-card-copy { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
 .mini-card-kicker { color: #93c5fd; font: 6px var(--pixel-font); }
 .mini-card strong { overflow: hidden; font: 7px var(--pixel-font); text-overflow: ellipsis; white-space: nowrap; }
 .mini-card-status { margin-left: auto; color: #4ade80; font: 6px var(--pixel-font); }

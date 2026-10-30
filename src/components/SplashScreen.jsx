@@ -23,13 +23,13 @@ export default function SplashScreen({ duration = 1500 }) {
         <span>GAME DEV &amp; SOUND</span>
       </div>
       <div className="splash-center">
-        <p className="splash-eyebrow">POKEFOLIO · LINA REINA</p>
+        <p className="splash-eyebrow">POKEFOLIO EDITION · LINA REINA</p>
         <h1 className="splash-title">LINA REINA</h1>
       </div>
       <div className="splash-bottom">
         <div className="splash-role">
           <span className="role-main">Game Developer</span>
-          <span className="role-sub">Unity Game Programmer | C# | Sound Designer</span>
+          <span className="role-sub">Game Developer | C# | Python | Music Producer</span>
         </div>
         <span className="splash-index">PRESS START <b>↗</b></span>
       </div>
