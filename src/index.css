@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Press+Start+2P&display=swap');
 
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--ui-font);
   color: #f8fafc;
   background: #050916;
   font-synthesis: none;
@@ -16,6 +16,7 @@
   --glow: #60a5fa;
   --lcd-light: #9bbc0f;
   --lcd-dark: #0f380f;
+  --ui-font: 'JetBrains Mono', 'Inter', monospace;
   --pixel-font: 'Press Start 2P', monospace;
 }
 

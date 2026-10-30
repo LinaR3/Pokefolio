@@ -1,3 +1,5 @@
+import { ProjectFacts, ProjectTechnology } from './ProjectFacts.jsx'
+
 const statusClass = {
   READY: 'ready',
   'IN PROGRESS': 'progress',
@@ -45,17 +47,14 @@ export default function ProjectCard({ project, index, category = 'Proyecto' }) {
     <article className={`lcd-card project-detail${project.wide ? ' project-detail--wide' : ''}`}>
       {!project.wide && <ProjectPreview project={project} index={index} />}
       <div className="project-detail-body">
+        {category && <p className="card-kicker project-detail-category">{category} #{String(index + 1).padStart(3, '0')}</p>}
+        <ProjectTechnology project={project} />
         <div className="project-card-title-row">
-          <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>
+          <h2>{project.name}</h2>
           <span className={`project-status-dot project-status--${statusTone}`} title={label} role="img" aria-label={`Estado del proyecto: ${label}`} />
         </div>
         {project.description && !project.hideDescription && <p className="project-description">{project.description}</p>}
-        <dl className="project-details">
-          {project.role && <div><dt>ROL</dt><dd>{project.role}</dd></div>}
-          {project.members && <div><dt>EQUIPO</dt><dd>{project.members}</dd></div>}
-          {project.contributions && <div><dt>APORTES</dt><dd>{project.contributions}</dd></div>}
-          {project.engine && <div><dt>ENGINE</dt><dd>{project.engine}</dd></div>}
-        </dl>
+        <ProjectFacts project={project} />
         {project.embedUrl && <iframe className="spotify-embed" src={project.embedUrl} title={`Reproductor de Spotify: ${project.name}`} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" allowFullScreen style={project.embedHeight ? { height: `${project.embedHeight}px` } : undefined} />}
         {project.embedUrl && project.playUrl
           ? <a className="spotify-link" href={project.playUrl} target="_blank" rel="noreferrer">ABRIR EN SPOTIFY ↗</a>

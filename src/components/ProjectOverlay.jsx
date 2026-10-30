@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { ProjectPreview } from './ProjectCard.jsx'
+import { ProjectFacts, ProjectTechnology } from './ProjectFacts.jsx'
 import { PokeballMark } from './PokeballMark.jsx'
 
 export default function ProjectOverlay({ project, origin, closing = false, onClose }) {
@@ -40,15 +41,10 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
             </a>
           </div>
           <article className="project-overlay__copy">
-            <p className="card-kicker">PROYECTO · {project.engine}</p>
+            <ProjectTechnology project={project} />
             <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <dl>
-              <div><dt>MI APORTE</dt><dd>{project.role}</dd></div>
-              {project.members && <div><dt>EQUIPO</dt><dd>{project.members}</dd></div>}
-              {project.contributions && <div><dt>APORTES</dt><dd>{project.contributions}</dd></div>}
-              {project.engine && <div><dt>HERRAMIENTAS</dt><dd>{project.engine}</dd></div>}
-            </dl>
+            <p className="project-overlay__description">{project.description}</p>
+            <ProjectFacts project={project} className="project-overlay__facts" />
             <button className="project-overlay__return" onClick={onClose}>◀ VOLVER AL POKEFOLIO</button>
           </article>
         </div>
