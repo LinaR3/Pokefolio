@@ -4,7 +4,7 @@ const statusClass = {
   SUSPENDIDO: 'suspended',
 }
 
-function ProjectVisual({ project, index, compact = false }) {
+export function ProjectPreview({ project, index = 0, compact = false }) {
   const content = project.video
     ? <video src={project.video} poster={project.image} controls preload="none" aria-label={`Video de ${project.name}`} />
     : project.image
@@ -23,7 +23,7 @@ export function ProjectSummaryCard({ project, index, selected, onSelect }) {
   const statusTone = statusClass[project.status] ?? 'progress'
   return (
     <button type="button" className={`project-summary${selected ? ' project-summary--selected' : ''}`} onClick={onSelect} aria-pressed={selected} aria-label={`Ver ${project.name}, ${project.status}`}>
-      <ProjectVisual project={project} index={index} compact />
+      <ProjectPreview project={project} index={index} compact />
       <span className="project-summary-copy"><strong>{String(index + 1).padStart(2, '0')} · {project.name}</strong><small className={`project-summary-status project-status--${statusTone}`}><i />{project.status}</small></span>
     </button>
   )
@@ -33,7 +33,7 @@ export default function ProjectCard({ project, index, category = 'Proyecto' }) {
   const statusTone = statusClass[project.status] ?? 'progress'
   return (
     <article className="lcd-card project-detail">
-      <ProjectVisual project={project} index={index} />
+      <ProjectPreview project={project} index={index} />
       <div className="project-detail-body">
         <div className="project-card-title-row">
           <div><p className="card-kicker">{category} #{String(index + 1).padStart(3, '0')}</p><h2>{project.name}</h2></div>

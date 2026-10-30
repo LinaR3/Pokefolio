@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Screen from './Screen.jsx'
 import SplashScreen from './SplashScreen.jsx'
 import ProjectCard, { ProjectSummaryCard } from './ProjectCard.jsx'
+import ProjectOverlay from './ProjectOverlay.jsx'
 import { audioProjects, contact, gameProjects, skills } from '../data/portfolio.js'
 
 const sections = [
@@ -116,9 +117,13 @@ function ContactContent() {
   )
 }
 
+function ProjectSelectionPrompt() {
+  return <div className="project-prompt"><span aria-hidden="true">✦</span><h2>SELECCIONA TU PROYECTO</h2><p>Elige una ficha abajo y presiona A para comenzar.</p></div>
+}
+
 function SectionContent({ section, selectedItem }) {
   if (section === 'profile') return <ProfileContent />
-  if (section === 'projects') return <ProjectDetail projects={gameProjects} selectedItem={selectedItem} category="PROYECTO" />
+  if (section === 'projects') return <ProjectSelectionPrompt />
   if (section === 'audio') return <ProjectDetail projects={audioProjects} selectedItem={selectedItem} category="AUDIO" />
   return <ContactContent />
 }
@@ -127,6 +132,9 @@ export default function PokedexShell() {
   const [started, setStarted] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const [selectedItems, setSelectedItems] = useState({ projects: 0, audio: 0 })
+  const [overlayProject, setOverlayProject] = useState(null)
+  const [overlayOrigin, setOverlayOrigin] = useState(null)
+  const displayFrameRef = useRef(null)
   const activeSection = sections[activeIndex]
   const itemList = activeSection.id === 'audio' ? audioProjects : gameProjects
 
@@ -147,12 +155,24 @@ export default function PokedexShell() {
     setSelectedItems((current) => ({ ...current, [activeSection.id]: (current[activeSection.id] + direction + itemList.length) % itemList.length }))
   }
 
+  function openProject(project) {
+    const frame = displayFrameRef.current?.getBoundingClientRect()
+    if (!frame) return
+    setOverlayOrigin({ left: frame.left, top: frame.top, width: frame.width, height: frame.height })
+    setOverlayProject(project)
+  }
+
+  function closeProject() {
+    setOverlayProject(null)
+  }
+
   function handleAButton() {
     if (!started) {
       setStarted(true)
       return
     }
-    if (activeSection.id === 'projects' || activeSection.id === 'audio') window.open(itemList[selectedItems[activeSection.id]].playUrl, '_blank', 'noopener,noreferrer')
+    if (activeSection.id === 'projects') openProject(itemList[selectedItems.projects])
+    if (activeSection.id === 'audio') window.open(itemList[selectedItems.audio].playUrl, '_blank', 'noopener,noreferrer')
     if (activeSection.id === 'contact') window.location.href = `mailto:${contact.email}`
   }
 
@@ -165,7 +185,7 @@ export default function PokedexShell() {
     function handleKeyDown(event) {
       if (event.altKey || event.ctrlKey || event.metaKey) return
       if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return
-      if (event.key === 'Escape') { resetToWelcome(); return }
+      if (event.key === 'Escape') { if (overlayProject) closeProject(); else resetToWelcome(); return }
       if (!started) {
         if (event.key === 'Enter' || event.key.toLowerCase() === 'a') setStarted(true)
         return
@@ -179,7 +199,7 @@ export default function PokedexShell() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [started, activeIndex, activeSection.id, selectedItems, itemList])
+  }, [started, activeIndex, activeSection.id, selectedItems, itemList, overlayProject])
 
   function handleUpDown(direction) {
     if (!started) setStarted(true)
@@ -204,7 +224,7 @@ export default function PokedexShell() {
             <span className="side-mark">✦</span>
           </aside>
 
-          <div className="display-frame">
+          <div className="display-frame" ref={displayFrameRef}>
             <div className="scanlines" aria-hidden="true" />
             <Screen>
               {!started ? <WelcomeScreen onStart={() => setStarted(true)} /> : (
@@ -252,7 +272,7 @@ export default function PokedexShell() {
             </div>
             <div className="mobile-ab-buttons"><button className="ab-button ab-button--a" onClick={handleAButton} aria-label="A, abrir o iniciar">A</button><button className="ab-button ab-button--b" onClick={() => started ? setActiveIndex(0) : setStarted(true)} aria-label="B, volver a perfil">B</button></div>
             {started && (activeSection.id === 'projects' || activeSection.id === 'audio') ? (
-              <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => setSelectedItems((current) => ({ ...current, [activeSection.id]: index }))} />
+              <ProjectSelectionTray projects={itemList} activeSection={activeSection.id} selectedItem={selectedItems[activeSection.id]} onSelect={(index) => { setSelectedItems((current) => ({ ...current, [activeSection.id]: index })); if (activeSection.id === 'projects') openProject(gameProjects[index]) }} />
             ) : (
               <div className="mini-card"><span className="mini-card-icon">{started ? activeSection.icon : '⚡'}</span><div><span className="mini-card-kicker">{started ? `SECCIÓN ${activeIndex + 1}` : 'ESTADO ENTRENADORA'}</span><strong>{started ? activeSection.label.toUpperCase() : 'LISTA PARA EXPLORAR'}</strong></div><span className="mini-card-status">ONLINE</span></div>
             )}
@@ -261,6 +281,7 @@ export default function PokedexShell() {
           <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO CON CURIOSIDAD <b>♥</b></span></footer>
         </div>
       </section>
+      <ProjectOverlay project={overlayProject} origin={overlayOrigin} onClose={closeProject} />
     </main>
   )
 }
