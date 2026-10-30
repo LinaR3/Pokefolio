@@ -140,7 +140,8 @@
 .project-selection .project-visual video { object-fit: cover; }
 .trainer-card { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .trainer-avatar { display: block; width: 104px; height: 104px; flex: 0 0 104px; border: 2px solid #0f380f70; border-radius: 8px; object-fit: cover; object-position: center; image-rendering: auto; }
-.trainer-hug-sprite { background-image: url("/images/sprite-sheets/lina-umbreon-hug-loop.png"); background-repeat: no-repeat; background-size: 700% auto; background-position: 0 53%; image-rendering: pixelated; animation: trainer-hug-loop 1.8s steps(9, end) infinite; }
+.trainer-hug-sprite { position: relative; overflow: hidden; }
+.trainer-hug-sprite::before { position: absolute; inset: 0; background-image: url("/images/sprite-sheets/lina-umbreon-hug-loop-padded.png"); background-repeat: no-repeat; background-size: 1000% auto; background-position: 0 53%; content: ""; image-rendering: pixelated; animation: trainer-hug-loop 1.8s steps(9, end) infinite; }
 @keyframes trainer-hug-loop { from { background-position: 0 53%; } to { background-position: 100% 53%; } }
 .trainer-copy { min-width: 0; }
 .trainer-copy .card-kicker { margin-bottom: 6px; }
@@ -254,7 +255,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .trainer-hug-sprite { animation: none; background-position: 0 53%; }
+  .trainer-hug-sprite::before { animation: none; background-position: 0 53%; }
 }
 
 .audio-empty { display: flex; min-height: 240px; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; }
