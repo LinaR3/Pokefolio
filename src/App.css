@@ -177,8 +177,9 @@
 .screen-footer-runner { position: absolute; bottom: 0; left: 0; display: block; width: var(--runner-width); height: 42px; background-image: url("/images/sprite-sheets/lina-umbreon-walk.png"); background-repeat: no-repeat; background-size: 400% 100%; background-position: 0 0; image-rendering: pixelated; animation: lina-walk-frames .64s steps(3, end) infinite, lina-walk-runway 16s linear infinite; }
 @keyframes lina-walk-frames { from { background-position: 0 0; } to { background-position: 100% 0; } }
 @keyframes lina-walk-runway { 0% { left: 0; transform: scaleX(-1); } 49.5% { left: calc(100% - var(--runner-width)); transform: scaleX(-1); } 50% { left: calc(100% - var(--runner-width)); transform: scaleX(1); } 99.5% { left: 0; transform: scaleX(1); } 100% { left: 0; transform: scaleX(-1); } }
-.screen-footer--projects .screen-footer-runway { --runner-width: clamp(64px, 5.5vw, 68px); top: -54px; left: 12%; right: 12%; height: 54px; }
-.screen-footer--projects .screen-footer-runner { left: 0; width: var(--runner-width); height: 54px; background-image: url("/images/sprite-sheets/lina-pokeball-story-30f.png"); background-size: 600% 500%; animation: lina-projects-story-frames 8s steps(1, end) infinite, lina-projects-story-path 8s linear infinite; }
+.screen-footer--projects .screen-footer-runway { --runner-width: 62px; top: -54px; left: 12%; right: 12%; height: 54px; }
+/* The atlas uses 256x224 frame windows on a 384x336 pitch, leaving half-frame transparent gutters. */
+.screen-footer--projects .screen-footer-runner { left: 0; width: var(--runner-width); height: 54px; background-image: url("/images/sprite-sheets/lina-pokeball-story-30f.png"); background-size: 850% 700%; animation: lina-projects-story-frames 8s steps(1, end) infinite, lina-projects-story-path 8s linear infinite; }
 @keyframes lina-projects-story-frames {
   0% { background-position: 0 0; }
   3.333% { background-position: 20% 0; }
