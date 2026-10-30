@@ -46,7 +46,8 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
             <dl>
               <div><dt>MI APORTE</dt><dd>{project.role}</dd></div>
               {project.members && <div><dt>EQUIPO</dt><dd>{project.members}</dd></div>}
-              <div><dt>HERRAMIENTAS</dt><dd>{project.engine}</dd></div>
+              {project.contributions && <div><dt>APORTES</dt><dd>{project.contributions}</dd></div>}
+              {project.engine && <div><dt>HERRAMIENTAS</dt><dd>{project.engine}</dd></div>}
             </dl>
             <button className="project-overlay__return" onClick={onClose}>◀ VOLVER AL POKEFOLIO</button>
           </article>

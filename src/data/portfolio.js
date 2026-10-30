@@ -11,9 +11,34 @@ export const gameProjects = [
     visualLabel: 'Animales de la granja de HunterFoodWeb',
     theme: 'green',
   },
+  {
+    name: 'Trick-or-loop',
+    status: 'READY',
+    description: 'Escapa de una pesadilla de Halloween antes de que el Boogeyman reclame tus dulces.',
+    role: 'Game Programmer',
+    contributions: 'SFX · Level Design',
+    engine: 'Unity',
+    playUrl: 'https://juandaara.itch.io/trick-or-loop',
+    linkLabel: 'VER EN ITCH.IO',
+    visual: '🎃',
+    visualLabel: 'Calabaza de Trick-or-loop',
+    theme: 'orange',
+  },
+  {
+    name: 'Orbiteros SAS',
+    status: 'READY',
+    description: 'Videojuego disponible para jugar en itch.io.',
+    role: 'Game Programmer',
+    contributions: 'SFX',
+    playUrl: 'https://osquiexe.itch.io/orbiteros-sas',
+    linkLabel: 'VER EN ITCH.IO',
+    visual: '🎮',
+    visualLabel: 'Control de videojuego para Orbiteros SAS',
+    theme: 'cyan',
+  },
 ]
 
-// Añade muestras reales cuando estén disponibles.
+// Muestras musicales publicadas en Spotify.
 export const audioProjects = []
 
 export const contact = {
