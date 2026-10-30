@@ -1,40 +1,15 @@
-// Contenido ficticio para visualizar las fichas. Sustituir por proyectos reales antes de publicar.
+// Proyectos publicados de Lina. Añade aquí proyectos con enlaces verificables.
 export const gameProjects = [
   {
-    name: 'Ecos de Aether',
+    name: 'HunterFoodWeb',
     status: 'READY',
-    description: 'Aventura de plataformas donde el jugador resuelve acertijos siguiendo ecos y señales ocultas.',
-    role: 'Gameplay programmer y diseño de niveles',
-    members: 'Lina, Mara Vélez y Tomás Ríos',
+    description: 'Juego de acción en el que ayudas a una granjera a alimentar a sus animales y esquivas a los zorros.',
+    role: 'Programación de videojuegos · Unity',
     engine: 'Unity · C#',
-    playUrl: 'https://example.com/?demo=ecos-de-aether',
-    visual: '🌌',
-    visualLabel: 'Paisaje nocturno de Ecos de Aether',
-    theme: 'violet',
-  },
-  {
-    name: 'Ritmo Salvaje',
-    status: 'IN PROGRESS',
-    description: 'Prototipo rítmico en el que cada criatura responde a patrones musicales y percusión.',
-    role: 'Programación de mecánicas y audio',
-    members: 'Lina, Sol Arango, Nico Ruiz y Eva León',
-    engine: 'Unity · C# · FMOD',
-    playUrl: 'https://example.com/?demo=ritmo-salvaje',
-    visual: '🥁',
-    visualLabel: 'Criatura musical de Ritmo Salvaje',
-    theme: 'orange',
-  },
-  {
-    name: 'Estación Abisal',
-    status: 'SUSPENDIDO',
-    description: 'Exploración narrativa en una estación submarina con ambientes sonoros reactivos.',
-    role: 'Game developer y sound designer',
-    members: 'Lina, Julián Mora y Paz Rojas',
-    engine: 'Unity · C# · Wwise',
-    playUrl: 'https://example.com/?demo=estacion-abisal',
-    visual: '🫧',
-    visualLabel: 'Estación submarina de Estación Abisal',
-    theme: 'cyan',
+    playUrl: 'https://play.unity.com/es/games/a0ff467f-c153-492f-a471-802357b4d6e8/hunterfoodweb',
+    visual: '🐄 🐓 🐎',
+    visualLabel: 'Animales de la granja de HunterFoodWeb',
+    theme: 'green',
   },
 ]
 

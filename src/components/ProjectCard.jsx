@@ -42,7 +42,7 @@ export default function ProjectCard({ project, index, category = 'Proyecto' }) {
         <p className="project-description">{project.description}</p>
         <dl className="project-details">
           <div><dt>ROL</dt><dd>{project.role}</dd></div>
-          <div><dt>INTEGRANTES</dt><dd>{project.members}</dd></div>
+          {project.members && <div><dt>EQUIPO</dt><dd>{project.members}</dd></div>}
           <div><dt>ENGINE</dt><dd>{project.engine}</dd></div>
         </dl>
         <a className="project-play" href={project.playUrl} target="_blank" rel="noreferrer" aria-label={`Abrir enlace de ejemplo para ${project.name}`}>
