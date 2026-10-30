@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" shape-rendering="crispEdges">
+  <path fill="#173f2e" d="M8 2h64v2h4v4h2v64h-2v4h-4v2H8v-2H4v-4H2V8h2V4h4z"/>
+  <path fill="#eef7dd" d="M10 6h60v2h4v4h2v56h-2v4h-4v2H10v-2H6v-4H4V12h2V8h4z"/>
+  <g fill="#78a66d">
+    <path d="M11 11h6v6h-6zM63 11h6v6h-6zM11 63h6v6h-6zM63 63h6v6h-6z"/>
+    <path d="M20 22h2v6h-2zM18 24h6v2h-6zM59 54h2v6h-2zM57 56h6v2h-6z"/>
+  </g>
+  <!-- Burbuja de contacto con identificador de LinkedIn -->
+  <path fill="#173f2e" d="M19 29h42v27h-7v6h-7v-6H19z"/>
+  <path fill="#f8f7e7" d="M23 33h34v19H23z"/>
+  <path fill="#0a66c2" d="M27 35h27v15H27z"/>
+  <g fill="#ffffff">
+    <path d="M32 41h4v7h-4zM32 37h4v3h-4z"/>
+    <path d="M39 41h4v2h-4zM39 43h3v5h-3zM45 41h4v2h-4zM45 43h3v5h-3z"/>
+  </g>
+  <path fill="#78a66d" d="M23 65h34v2H23z"/>
+</svg>

@@ -190,6 +190,7 @@
 .mini-card-link:hover, .mini-card-link:focus-visible { border-color: #93c5fd; background: #162d6b; }
 .mini-card-link:focus-visible { outline: 2px solid #f5c84c; outline-offset: 2px; }
 .mini-card-icon { display: grid; width: 43px; height: 43px; flex: 0 0 43px; place-items: center; border: 1px solid #60a5fa55; border-radius: 8px; background: #162d6b; color: #f5c84c; font-size: 22px; }
+.mini-card-contact-icon { display: block; border: 0; border-radius: 0; background: transparent; object-fit: contain; }
 .mini-card-copy { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
 .mini-card-kicker { color: #93c5fd; font: 6px var(--pixel-font); }
 .mini-card strong { overflow: hidden; font: 7px var(--pixel-font); text-overflow: ellipsis; white-space: nowrap; }

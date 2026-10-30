@@ -112,7 +112,7 @@ function TrainerStatusCard({ started, activeSection, activeIndex }) {
   if (started && activeSection.id === 'contact') {
     return (
       <a className="mini-card mini-card-link mini-card-contact" href={contact.linkedin} target="_blank" rel="noreferrer" aria-label="Contactar a Lina Reina por LinkedIn">
-        <span className="mini-card-icon" aria-hidden="true">↗</span>
+        <img className="mini-card-icon mini-card-contact-icon" src="/images/thumbnails/linkedin-contact.svg" alt="" />
         <span className="mini-card-copy">
           <span className="mini-card-kicker">¿HABLAMOS DE UNA OPORTUNIDAD?</span>
           <strong>CONTACTAR EN LINKEDIN</strong>
