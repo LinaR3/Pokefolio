@@ -451,12 +451,17 @@
 .project-overlay__mobile-controls { position: absolute; inset: auto max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); z-index: 2; display: flex; align-items: flex-end; justify-content: space-between; pointer-events: none; }
 .project-overlay__dpad { position: relative; width: 144px; height: 144px; pointer-events: none; }
 .project-overlay__dpad button { position: absolute; display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid #cbd5e177; border-radius: 12px; background: #09142cdd; color: #f8fafc; font: 600 18px/1 var(--ui-font); box-shadow: inset 0 1px #ffffff24, 0 3px 8px #0009; pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none; }
-.project-overlay__dpad button:active, .project-overlay__fire:active { transform: scale(.93); filter: brightness(1.25); }
+.project-overlay__dpad button:active, .project-overlay__fire:active, .project-overlay__brake:active { transform: scale(.93); filter: brightness(1.25); }
 .project-overlay__dpad .is-up { left: 48px; top: 0; }
 .project-overlay__dpad .is-left { left: 0; top: 48px; }
 .project-overlay__dpad .is-right { right: 0; top: 48px; }
 .project-overlay__dpad .is-down { left: 48px; bottom: 0; }
-.project-overlay__fire { display: grid; width: 72px; height: 72px; place-items: center; margin: 0 8px 23px 0; border: 3px solid #ffffff5c; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ef4444, #991b1b 75%); color: white; font: 700 17px/1 var(--ui-font); box-shadow: 0 5px #0008, inset 0 2px #ffffff55; pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none; }
+.project-overlay__flight-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0 8px 10px 0; pointer-events: none; }
+.project-overlay__fire { display: flex; width: 72px; height: 72px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; margin: 0; border: 3px solid #ffffff5c; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ef4444, #991b1b 75%); color: white; font: 700 25px/1 var(--ui-font); box-shadow: 0 5px #0008, inset 0 2px #ffffff55; pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none; }
+.project-overlay__fire small { font-size: 7px; line-height: 1; letter-spacing: .06em; }
+.project-overlay__brake { display: flex; min-width: 76px; min-height: 50px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 5px 9px; border: 2px solid #efff8daa; border-radius: 10px; background: #09142cee; color: #efff8d; font-family: var(--ui-font); box-shadow: 0 4px #0008, inset 0 1px #ffffff24; pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none; }
+.project-overlay__brake strong { font-size: 12px; line-height: 1; letter-spacing: .08em; }
+.project-overlay__brake small { font-size: 8px; line-height: 1; letter-spacing: .06em; }
 .project-overlay__rotate-hint { display: none; }
 @media (orientation: portrait) {
   .project-overlay__screen.is-mobile-game-mode .project-overlay__rotate-hint { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 28px; background: #050916eF; color: #efff8d; text-align: center; }
@@ -468,7 +473,9 @@
 @media (max-width: 700px) and (orientation: landscape) {
   .project-overlay__mobile-controls { inset: auto max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
   .project-overlay__dpad { transform: scale(.8); transform-origin: bottom left; }
-  .project-overlay__fire { width: 62px; height: 62px; margin: 0 5px 17px 0; }
+  .project-overlay__flight-actions { gap: 7px; margin: 0 5px 3px 0; }
+  .project-overlay__fire { width: 62px; height: 62px; }
+  .project-overlay__brake { min-width: 66px; min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .project-overlay__screen, .project-overlay__backdrop { transition-duration: .01ms; }
