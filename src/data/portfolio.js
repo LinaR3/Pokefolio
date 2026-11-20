@@ -1,6 +1,23 @@
 // Proyectos publicados de Lina. Añade aquí proyectos con enlaces verificables.
 export const gameProjects = [
   {
+    name: 'Air Race: Ocean Run — Nivel 01',
+    thumbnail: '/images/projects/air-race-ocean-run.png',
+    thumbnailLabel: 'Avión de Air Race: Ocean Run sobre el océano, entre pilones',
+    image: '/images/projects/air-race-ocean-run.png',
+    visualLabel: 'Captura de Air Race: Ocean Run Nivel 01',
+    status: 'READY',
+    description: 'Prototipo arcade de carreras aéreas sobre el océano. Atraviesa seis checkpoints, gestiona la energía de vuelo y recoge latas para activar impulsos.',
+    role: 'Diseño de juego · Programación Unity',
+    technology: 'Unity · C# · WebGL',
+    gameType: ['Carreras aéreas', 'Arcade', '3D', 'WebGL'],
+    playUrl: 'https://play.unity.com/en/games/d17632af-f66f-4008-8f21-b8ca1c3175dc/webbuild',
+    linkLabel: 'JUGAR EN UNITY PLAY',
+    playLabel: '▶ JUGAR EN UNITY PLAY',
+    visual: '✈',
+    theme: 'cyan',
+  },
+  {
     name: 'HunterFoodWeb',
     thumbnail: '/images/thumbnails/hunterfoodweb.svg',
     thumbnailLabel: 'Pollo pixel art enmarcado para HunterFoodWeb',
