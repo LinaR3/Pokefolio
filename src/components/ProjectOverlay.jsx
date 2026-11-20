@@ -100,7 +100,9 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
     gameWindow.focus()
     canvas.focus({ preventScroll: true })
     const keyCodes = { ArrowUp: 38, ArrowDown: 40, ArrowLeft: 37, ArrowRight: 39, Space: 32 }
-    const options = { key: key === 'Space' ? ' ' : key, code: key, keyCode: keyCodes[key], which: keyCodes[key], bubbles: true, cancelable: true }
+    const airRaceKeys = { ArrowUp: ['w', 'KeyW', 87], ArrowDown: ['s', 'KeyS', 83], ArrowLeft: ['a', 'KeyA', 65], ArrowRight: ['d', 'KeyD', 68], Space: [' ', 'Space', 32] }
+    const [mappedKey, mappedCode, mappedKeyCode] = project.name.startsWith('Air Race') ? airRaceKeys[key] : [key === 'Space' ? ' ' : key, key, keyCodes[key]]
+    const options = { key: mappedKey, code: mappedCode, keyCode: mappedKeyCode, which: mappedKeyCode, bubbles: true, cancelable: true }
     canvas.dispatchEvent(new gameWindow.KeyboardEvent('keydown', options))
     pressedKeysRef.current.set(key, { canvas, gameWindow, options })
   }
@@ -163,7 +165,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
                         <button className="is-right" aria-label="Mover hacia la derecha" onPointerDown={(event) => pressMobileKey(event, 'ArrowRight')} onPointerUp={(event) => releaseMobileKey(event, 'ArrowRight')} onPointerCancel={(event) => releaseMobileKey(event, 'ArrowRight')} onLostPointerCapture={(event) => releaseMobileKey(event, 'ArrowRight')}>▶</button>
                         <button className="is-down" aria-label="Mover hacia abajo" onPointerDown={(event) => pressMobileKey(event, 'ArrowDown')} onPointerUp={(event) => releaseMobileKey(event, 'ArrowDown')} onPointerCancel={(event) => releaseMobileKey(event, 'ArrowDown')} onLostPointerCapture={(event) => releaseMobileKey(event, 'ArrowDown')}>▼</button>
                       </div>
-                      <button className="project-overlay__fire" aria-label="Lanzar comida" onPointerDown={(event) => pressMobileKey(event, 'Space')} onPointerUp={(event) => releaseMobileKey(event, 'Space')} onPointerCancel={(event) => releaseMobileKey(event, 'Space')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Space')}>A</button>
+                        <button className="project-overlay__fire" aria-label={project.name.startsWith('Air Race') ? 'Activar impulso' : 'Lanzar comida'} onPointerDown={(event) => pressMobileKey(event, 'Space')} onPointerUp={(event) => releaseMobileKey(event, 'Space')} onPointerCancel={(event) => releaseMobileKey(event, 'Space')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Space')}>{project.name.startsWith('Air Race') ? '⚡' : 'A'}</button>
                     </div>
                     <div className="project-overlay__rotate-hint" role="status">
                       <span aria-hidden="true">↻</span>
@@ -173,12 +175,12 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
                   </>
                 ) : gameStarted ? (
                   <div className="project-overlay__player-toolbar">
-                    <span>HUNTERFOOD · DEMO ACTIVA</span>
+                    <span>{project.name.toUpperCase()} · DEMO ACTIVA</span>
                     <button onClick={openDesktopFullscreen}>⛶ PANTALLA COMPLETA</button>
                     <button onClick={returnToProject}>VOLVER A LA VISTA PREVIA</button>
                   </div>
                 ) : (
-                  <button className="project-overlay__play" onClick={startGame}>▶ JUGAR DEMO</button>
+                  <button className="project-overlay__play" onClick={startGame}>{project.playLabel ?? '▶ JUGAR DEMO'}</button>
                 )}
               </>
             ) : (
@@ -196,13 +198,13 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
             <p className="project-overlay__description">{project.description}</p>
             <ProjectFacts project={project} className="project-overlay__facts" />
             {project.webglUrl && project.playUrl && (
-              <a className="project-overlay__external" href={project.playUrl} target="_blank" rel="noreferrer">↗ {project.linkLabel ?? 'ABRIR PROYECTO'}</a>
+              <a className="project-overlay__external" href={project.playUrl} target="_blank" rel="noreferrer">↗ {project.externalLabel ?? project.linkLabel ?? 'ABRIR PROYECTO'}</a>
             )}
             <button className="project-overlay__return" onClick={closeOverlay}>◀ VOLVER AL POKEFOLIO</button>
           </article>
           {project.webglUrl && (
             <div className="project-overlay__mobile-actions" aria-hidden={mobileGameMode || undefined}>
-              <a className="project-overlay__external" href={project.playUrl} target="_blank" rel="noreferrer">↗ {project.linkLabel ?? 'ABRIR EN ITCH.IO'}</a>
+            <a className="project-overlay__external" href={project.playUrl} target="_blank" rel="noreferrer">↗ {project.externalLabel ?? project.linkLabel ?? 'ABRIR EN ITCH.IO'}</a>
               <button className="project-overlay__return" onClick={closeOverlay}>◀ VOLVER AL POKEFOLIO</button>
             </div>
           )}
