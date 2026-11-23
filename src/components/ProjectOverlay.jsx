@@ -4,11 +4,15 @@ import { ProjectPreview } from './ProjectCard.jsx'
 import { ProjectFacts, ProjectTechnology } from './ProjectFacts.jsx'
 import { PokeballMark } from './PokeballMark.jsx'
 
-function isMobileViewport() {
-  return window.matchMedia('(max-width: 700px), (pointer: coarse) and (max-width: 900px)').matches
+function usesTouchPlayer(isAirRace) {
+  const query = isAirRace
+    ? '(pointer: coarse)'
+    : '(max-width: 700px), (pointer: coarse) and (max-width: 900px)'
+  return window.matchMedia(query).matches
 }
 
 export default function ProjectOverlay({ project, origin, closing = false, onClose }) {
+  const isAirRace = project?.name.startsWith('Air Race')
   const [expanded, setExpanded] = useState(false)
   const [gameStarted, setGameStarted] = useState(false)
   const [mobileGameMode, setMobileGameMode] = useState(false)
@@ -63,7 +67,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
 
   async function startGame() {
     setGameStarted(true)
-    if (!isMobileViewport()) return
+    if (!usesTouchPlayer(isAirRace)) return
 
     setMobileGameMode(true)
     try {
@@ -101,7 +105,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
     canvas.focus({ preventScroll: true })
     const keyCodes = { ArrowUp: 38, ArrowDown: 40, ArrowLeft: 37, ArrowRight: 39, Space: 32 }
     const airRaceKeys = { ArrowUp: ['w', 'KeyW', 87], ArrowDown: ['s', 'KeyS', 83], ArrowLeft: ['a', 'KeyA', 65], ArrowRight: ['d', 'KeyD', 68], Space: [' ', 'Space', 32], Shift: ['Shift', 'ShiftLeft', 16] }
-    const [mappedKey, mappedCode, mappedKeyCode] = project.name.startsWith('Air Race') ? airRaceKeys[key] : [key === 'Space' ? ' ' : key, key, keyCodes[key]]
+    const [mappedKey, mappedCode, mappedKeyCode] = isAirRace ? airRaceKeys[key] : [key === 'Space' ? ' ' : key, key, keyCodes[key]]
     const options = { key: mappedKey, code: mappedCode, keyCode: mappedKeyCode, which: mappedKeyCode, bubbles: true, cancelable: true }
     canvas.dispatchEvent(new gameWindow.KeyboardEvent('keydown', options))
     pressedKeysRef.current.set(key, { canvas, gameWindow, options })
@@ -121,7 +125,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
       <button className="project-overlay__backdrop" onClick={closeOverlay} aria-label="Cerrar ficha ampliada" />
       <section
         ref={screenRef}
-        className={`project-overlay__screen${mobileGameMode ? ' is-mobile-game-mode' : ''}`}
+        className={`project-overlay__screen${isAirRace && gameStarted ? ' is-air-race-player' : ''}${mobileGameMode ? ' is-mobile-game-mode' : ''}`}
         style={{
           '--origin-left': `${origin.left}px`,
           '--origin-top': `${origin.top}px`,
@@ -147,6 +151,7 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
                       title={`Jugar ${project.name}`}
                       allow="autoplay; fullscreen; gamepad; screen-wake-lock"
                       allowFullScreen
+                      onLoad={isAirRace ? (event) => event.currentTarget.focus({ preventScroll: true }) : undefined}
                     />
                   ) : (
                     <div className="project-overlay__game-poster">
@@ -166,14 +171,14 @@ export default function ProjectOverlay({ project, origin, closing = false, onClo
                         <button className="is-down" aria-label="Mover hacia abajo" onPointerDown={(event) => pressMobileKey(event, 'ArrowDown')} onPointerUp={(event) => releaseMobileKey(event, 'ArrowDown')} onPointerCancel={(event) => releaseMobileKey(event, 'ArrowDown')} onLostPointerCapture={(event) => releaseMobileKey(event, 'ArrowDown')}>▼</button>
                       </div>
                       <div className="project-overlay__flight-actions">
-                        <button className="project-overlay__fire" aria-label={project.name.startsWith('Air Race') ? 'Activar impulso' : 'Lanzar comida'} onPointerDown={(event) => pressMobileKey(event, 'Space')} onPointerUp={(event) => releaseMobileKey(event, 'Space')} onPointerCancel={(event) => releaseMobileKey(event, 'Space')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Space')}>{project.name.startsWith('Air Race') ? <><span aria-hidden="true">⚡</span><small>IMPULSO</small></> : 'A'}</button>
-                        {project.name.startsWith('Air Race') && <button className="project-overlay__brake" aria-label="Frenar y cerrar el giro" onPointerDown={(event) => pressMobileKey(event, 'Shift')} onPointerUp={(event) => releaseMobileKey(event, 'Shift')} onPointerCancel={(event) => releaseMobileKey(event, 'Shift')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Shift')}><strong>SHIFT</strong><small>FRENO / GIRO</small></button>}
+                        <button className="project-overlay__fire" aria-label={isAirRace ? 'Activar impulso' : 'Lanzar comida'} onPointerDown={(event) => pressMobileKey(event, 'Space')} onPointerUp={(event) => releaseMobileKey(event, 'Space')} onPointerCancel={(event) => releaseMobileKey(event, 'Space')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Space')}>{isAirRace ? <><span aria-hidden="true">⚡</span><small>IMPULSO</small></> : 'A'}</button>
+                        {isAirRace && <button className="project-overlay__brake" aria-label="Frenar y cerrar el giro" onPointerDown={(event) => pressMobileKey(event, 'Shift')} onPointerUp={(event) => releaseMobileKey(event, 'Shift')} onPointerCancel={(event) => releaseMobileKey(event, 'Shift')} onLostPointerCapture={(event) => releaseMobileKey(event, 'Shift')}><strong>SHIFT</strong><small>FRENO / GIRO</small></button>}
                       </div>
                     </div>
                     <div className="project-overlay__rotate-hint" role="status">
                       <span aria-hidden="true">↻</span>
                       <strong>GIRA TU CELULAR</strong>
-                      <small>{project.name.startsWith('Air Race') ? 'Air Race se juega mejor en horizontal.' : 'HunterFood se juega mejor en horizontal.'}</small>
+                      <small>{isAirRace ? 'Air Race se juega mejor en horizontal.' : 'HunterFood se juega mejor en horizontal.'}</small>
                     </div>
                   </>
                 ) : gameStarted ? (

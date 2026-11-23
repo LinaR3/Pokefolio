@@ -322,7 +322,7 @@ export default function PokedexShell() {
           <footer className="console-footer"><button onClick={resetToWelcome}>◀ INICIO / REINICIAR</button><span>HECHO EN EL LLANO</span></footer>
         </div>
       </section>
-      <ProjectOverlay project={overlayProject} origin={overlayOrigin} closing={overlayClosing} onClose={closeProject} />
+      <ProjectOverlay key={overlayProject?.name} project={overlayProject} origin={overlayOrigin} closing={overlayClosing} onClose={closeProject} />
     </main>
   )
 }

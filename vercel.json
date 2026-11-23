@@ -25,7 +25,7 @@
       ]
     },
     {
-      "source": "/games/airraceoceanrun/Build/WebBuild.wasm.br",
+      "source": "/games/airraceoceanrun/Build/radar-hud/WebBuild.wasm.br",
       "headers": [
         { "key": "Content-Type", "value": "application/wasm" },
         { "key": "Content-Encoding", "value": "br" },
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "source": "/games/airraceoceanrun/Build/WebBuild.framework.js.br",
+      "source": "/games/airraceoceanrun/Build/radar-hud/WebBuild.framework.js.br",
       "headers": [
         { "key": "Content-Type", "value": "application/javascript" },
         { "key": "Content-Encoding", "value": "br" },
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "source": "/games/airraceoceanrun/Build/WebBuild.data.br",
+      "source": "/games/airraceoceanrun/Build/radar-hud/WebBuild.data.br",
       "headers": [
         { "key": "Content-Type", "value": "application/octet-stream" },
         { "key": "Content-Encoding", "value": "br" },

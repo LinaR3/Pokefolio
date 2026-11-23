@@ -3,8 +3,10 @@ import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-const unityBuildDirectory = path.resolve('public/games/hunterfoodweb/Build')
-const unityBuildUrlPrefix = '/games/hunterfoodweb/Build/'
+const unityBuildUrlPrefixes = [
+  '/games/hunterfoodweb/Build/',
+  '/games/airraceoceanrun/Build/radar-hud/',
+]
 
 function unityBrotliAssets() {
   function serveBrotliAsset(request, response, next) {
@@ -15,9 +17,11 @@ function unityBrotliAssets() {
       return next()
     }
 
-    if (!pathname.startsWith(unityBuildUrlPrefix) || !pathname.endsWith('.br')) return next()
-    const fileName = path.basename(pathname)
-    const filePath = path.join(unityBuildDirectory, fileName)
+    const buildPrefix = unityBuildUrlPrefixes.find((prefix) => pathname.startsWith(prefix))
+    if (!buildPrefix || !pathname.endsWith('.br')) return next()
+    const fileName = pathname.slice(buildPrefix.length)
+    if (fileName !== path.basename(fileName)) return next()
+    const filePath = path.resolve('public', `.${buildPrefix}`, fileName)
 
     let size
     try {

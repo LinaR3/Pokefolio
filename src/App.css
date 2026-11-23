@@ -480,3 +480,87 @@
 @media (prefers-reduced-motion: reduce) {
   .project-overlay__screen, .project-overlay__backdrop { transition-duration: .01ms; }
 }
+
+.project-overlay.is-expanded .project-overlay__screen.is-air-race-player:not(.is-mobile-game-mode) {
+  inset: 2dvh 2vw;
+  width: 96vw;
+  height: 96dvh;
+}
+.is-air-race-player:not(.is-mobile-game-mode) .project-overlay__body--playable {
+  display: flex;
+  align-items: stretch;
+  padding: 10px;
+}
+.is-air-race-player:not(.is-mobile-game-mode) .project-overlay__preview {
+  width: 100%;
+  justify-content: stretch;
+}
+.is-air-race-player:not(.is-mobile-game-mode) .project-overlay__game-frame {
+  flex: 1 1 0;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+.is-air-race-player .project-overlay__copy,
+.is-air-race-player .project-overlay__mobile-actions { display: none; }
+
+.is-air-race-player.is-mobile-game-mode .project-overlay__preview {
+  --flight-control-width: clamp(82px, 13vw, 120px);
+  display: grid;
+  grid-template-columns: var(--flight-control-width) minmax(0, 1fr) var(--flight-control-width);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 4px;
+  padding: max(4px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right))
+    max(4px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-left));
+}
+.is-air-race-player.is-mobile-game-mode .project-overlay__mobile-back {
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: start;
+  min-height: 34px;
+  padding: 5px 10px;
+}
+.is-air-race-player.is-mobile-game-mode .project-overlay__game-frame {
+  position: relative;
+  grid-column: 2;
+  grid-row: 2;
+}
+.is-air-race-player.is-mobile-game-mode .project-overlay__mobile-controls { display: contents; }
+.is-air-race-player.is-mobile-game-mode .project-overlay__dpad {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  transform: none;
+}
+.is-air-race-player.is-mobile-game-mode .project-overlay__dpad button {
+  position: static;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  font-size: 13px;
+}
+.is-air-race-player .project-overlay__dpad .is-up { grid-area: 1 / 2; }
+.is-air-race-player .project-overlay__dpad .is-left { grid-area: 2 / 1; }
+.is-air-race-player .project-overlay__dpad .is-right { grid-area: 2 / 3; }
+.is-air-race-player .project-overlay__dpad .is-down { grid-area: 3 / 2; }
+.is-air-race-player.is-mobile-game-mode .project-overlay__flight-actions {
+  grid-column: 3;
+  grid-row: 2;
+  align-self: center;
+  margin: 0;
+}
+.is-air-race-player.is-mobile-game-mode .project-overlay__fire { width: 62px; height: 62px; }
+@media (orientation: portrait) {
+  .is-air-race-player.is-mobile-game-mode .project-overlay__game-frame,
+  .is-air-race-player.is-mobile-game-mode .project-overlay__mobile-controls { visibility: hidden; }
+  .is-air-race-player.is-mobile-game-mode .project-overlay__rotate-hint {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
